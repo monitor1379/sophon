@@ -100,9 +100,34 @@ def code_snippet(snippet):
     return result
 
 
-def import_from_name(function_name):
-    names = function_name.split('.')
+def import_from_name(name):
+    names = name.split('.')
     mod = __import__(names[0])
     for i in range(1, len(names)):
         mod = getattr(mod, names[i])
     return mod
+
+
+
+def generate_function_markdown(function):
+    signature = extract_function_signature(function, inspect.ismethod(function))
+    docstring = extract_function_docstring(function)
+    md = []
+    md.append('# ' + function.__name__ + '\n')
+    md.append(code_snippet(signature))
+    md.append(docstring)
+    md.append('---\n')
+    md = '\n'.join(md)
+    return md
+
+
+def generate_class_markdown(clazz):
+    signature = extract_class_signature(clazz)
+    docstring = extract_class_docstring(clazz)
+    md = []
+    md.append('# ' + clazz.__name__ + '\n')
+    md.append(code_snippet(signature))
+    md.append(docstring)
+    md.append('---\n')
+    md = '\n'.join(md)
+    return md
