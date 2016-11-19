@@ -24,20 +24,20 @@ __all__ = [
 
 
 def extract_function_signature(function, ismethod=False):
-    """given a function, return the signature string of function.
+    """Given a function, return the signature string of function.
 
     # Arguments
-        function: function object.
-        ismethod: boolean. represents that the function is a method of a class or not.
+        function: `function object`.
+        ismethod: `boolean`. represents that the function is a method of a class or not.
             Note that if a "method" of class is static, then it is a `function` instead of `method`.
             The simplest way to distinguish `function` and `method` is to see if there is a argument
             named `self` in the arguments list of the function.
 
     # Returns
-        a string signature of function.
+        `str`. A string signature of function.
 
     # Examples
-        assume that there are some functions in a module named `mod`:
+        Assume that there are some functions in a module named `mod`:
         ```python
         # mod.py
         import sophon
@@ -81,8 +81,6 @@ def extract_function_signature(function, ismethod=False):
 
         print sophon.extract_function_signature(bar.baz3, ismethod=False)
         # print "mod.bar.baz3(a, b='b', c=None, **kwargs)" to the console
-
-
         ```
 
 
@@ -126,13 +124,13 @@ def extract_function_signature(function, ismethod=False):
 
 
 def extract_class_signature(clazz):
-    """given a class, return the signature string of function `class.__init__`.
+    """Given a class, return the signature string of function `class.__init__`.
 
     # Arguments
-        clazz: class object.
+        clazz: `class object`.
 
     # Returns
-        a string signature of function `class.__init__`.
+        `str`. A string signature of function `class.__init__`.
 
     # Examples
         ```python
@@ -152,7 +150,6 @@ def extract_class_signature(clazz):
 
         print extract_class_signature(bar)
         # print "mod.bar(a, b='b', c=None, **kwargs)" to the console
-
         ```
     """
     try:
@@ -166,13 +163,13 @@ def extract_class_signature(clazz):
 
 
 def extract_function_docstring(function):
-    """extract the docstring of function and change it into standard markdown style.
+    """Extract the docstring of function and change it into standard markdown style.
 
     # Arguments
-        function: function object.
+        function: `function object`.
 
     # Returns
-        str type. markdown docstring of the function.
+        `str`. markdown docstring of the function.
     """
     docstring = inspect.getdoc(function)
     if not docstring:
@@ -185,7 +182,7 @@ def extract_function_docstring(function):
 
     # replace 'something: desc' to '- **something**: desc'
     docstring = re.sub(r'\n    (\S*):(.*)',
-                       r'\n\n- **\1**:\2',
+                       r'\n- **\1**:\2',
                        docstring)
 
     # left indentation
@@ -194,16 +191,16 @@ def extract_function_docstring(function):
 
 
 def extract_class_docstring(clazz):
-    """extract the docstring of class and change it into standard markdown style.
+    """Extract the docstring of class and change it into standard markdown style.
 
     # Arguments
-        clazz: class object.
+        clazz: `class object`.
 
     # Returns
-        str type. markdown docstring of the class.
+        `str`. markdown docstring of the class.
 
     # Note
-        only extract the docstring of class, exclude member of the given class.
+        Only extract the docstring of class, excluding members of the given class.
 
     # Examples
         ```python
@@ -227,13 +224,13 @@ def extract_class_docstring(clazz):
 
 
 def code_snippet(snippet):
-    """change a string-typed code snippet into markdown-style code fence.
+    """Change a string-typed code snippet into markdown-style code fence.
 
     # Arguments
-        snippet: str type. a code snippet.
+        snippet: `str`. a code snippet.
 
     # Returns
-        str type. markdown-style code fence.
+        `str`. markdown-style code fence.
 
     """
     result = '```python\n'
@@ -243,13 +240,13 @@ def code_snippet(snippet):
 
 
 def import_from_name(name):
-    """import module from string.
+    """Import module from string.
 
     # Arguments
-        name: str. such as `foo`, `foo.someclass` or `foo.somefunction`.
+        name: `str`. such as `foo`, `foo.someclass` or `foo.somefunction`.
 
     # Returns
-        the module object, it could be module-typed, class-typed or function-typed.
+        `module object`. it could be module-typed, class-typed or function-typed.
     """
     names = name.split('.')
     mod = __import__(names[0])
@@ -262,12 +259,12 @@ def get_repo_link(obj, repo_url, branch='master'):
     """Get the definition position of obj in source file, then link it to GitHub repo.
 
     # Arguments
-        obj: function object or class object.
-        repo_url: such as `https://github.com/yourusername/yourrepo`
-        branch: repo branch.
+        obj: `function object` or `class object`.
+        repo_url: `str`. such as `https://github.com/yourusername/yourrepo`
+        branch: `str`. repo branch.
 
     # Returns
-        Return the hyperlink of obj.
+        `str`. Return the hyperlink of obj.
     """
     module_name = obj.__module__
     path = module_name.replace('.', '/')
@@ -278,21 +275,21 @@ def get_repo_link(obj, repo_url, branch='master'):
 
 
 def generate_function_markdown(function, repo_url, branch):
-    """given a function object, generate markdown documents.
+    """Given a function object, generate markdown documents.
 
     # Arguments
-        function: function object.
-        repo_url: such as `https://github.com/yourusername/yourrepo`
-        branch: repo branch.
+        function: `function object`.
+        repo_url: `str`. such as `https://github.com/yourusername/yourrepo`
+        branch: `str`. repo branch.
 
     # Returns
-        str type. markdown documents of the function.
+        `str`. markdown documents of the function.
 
     """
     signature = extract_function_signature(function, inspect.ismethod(function))
     signature = signature.replace(function.__module__ + '.', '')
     docstring = extract_function_docstring(function)
-    md = ''
+    md = '\n'
     if repo_url:
         md += '<span style="float:right;">' + get_repo_link(function, repo_url, branch) + '</span>' + '\n\n'
     md += '## ' + function.__name__ + '\n\n'
@@ -303,20 +300,20 @@ def generate_function_markdown(function, repo_url, branch):
 
 
 def generate_class_markdown(clazz, repo_url=None, branch='master'):
-    """given a class object, generate markdown documents.
+    """Given a class object, generate markdown documents.
 
     # Arguments
-        clazz: class object.
-        repo_url: such as `https://github.com/yourusername/yourrepo`
-        branch: repo branch.
+        clazz: `class object`.
+        repo_url: `str`. such as `https://github.com/yourusername/yourrepo`
+        branch: `str`. repo branch.
 
     # Returns
-        str type. markdown documents of the class.
+        `str`. markdown documents of the class.
 
     """
     signature = extract_class_signature(clazz)
     docstring = extract_class_docstring(clazz)
-    md = ''
+    md = '\n'
     if repo_url:
         md += '<span style="float:right;">' + get_repo_link(clazz, repo_url, branch) + '</span>' + '\n\n'
     md += '## ' + clazz.__name__ + '\n\n'
@@ -327,10 +324,10 @@ def generate_class_markdown(clazz, repo_url=None, branch='master'):
 
 
 def sophon_build(config_fn):
-    """build documents of python project given the configuration filename
+    """Build documents of python project given the configuration filename
 
     # Arguments
-        config_fn: Sophon configuration filename.
+        config_fn: `str`. Sophon configuration filename.
 
     # Returns
         None
@@ -381,7 +378,7 @@ def sophon_build(config_fn):
         else:
             build_dir = os.path.normpath(conf_dir + os.sep + build_dir)
     else:
-        build_dir = conf_dir + os.sep + 'build'
+        build_dir = conf_dir + os.sep + 'api'
 
     print('code dir:    ', code_dir)
     print('template dir:', template_dir)

@@ -7,7 +7,7 @@ code_dir: .
 # 如果没有模板，则所有tag对应的markdown doc对应添加在page文件末尾
 template_dir: templates
 
-# 可以没有，默认为./build
+# 可以没有，默认为./api
 build_dir:
 
 # 需要注意，上述两个路径，可以是绝对路径，可以是相对路径

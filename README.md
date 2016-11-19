@@ -140,7 +140,4 @@ more information in here:[A Guide to Sophon documentation](https://github.com/nu
 而"-on"表示"粒子"，比如离子（ion），电子（Electron），质子(proton)，中子（Neutron），强子（hadron），
 玻色子（boson），胶子（Gluon），光子（photon）等等。
 
-
-《三体2：黑暗森林》译者刘宇昆在书中的注解如下：
-> Translator's Note: There is a pun in Chinese between the word for a proton, 
-> zhizi (质子), and the word for a sophon, zhizi (智子).
+在原著中，智子表示的是一种能够将自身折叠到11维粒子的超级计算机。

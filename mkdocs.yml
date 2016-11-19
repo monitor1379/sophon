@@ -1,11 +1,18 @@
 site_name: Sophon
-docs_dir: docs/build
+docs_dir: docs
 
-theme: readthedocs
+#theme: readthedocs
+theme: yeti
+#theme: united
+#theme: alabaster
 
 pages:
 - Home: index.md
 - API: api/sophon.md
+
+# Copyright
+copyright: 'Copyright (c) 2016 Zhenpeng Deng'
+
 
 markdown_extensions:
 - admonition
