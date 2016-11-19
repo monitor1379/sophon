@@ -131,7 +131,7 @@ $ sophon <py-file> [md-file]
 more information in here:[A Guide to Sophon documentation](https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt)
 
 
-## What does "Sophon" mean?
+## "What does "Sophon" mean?"
 
 "Sophon"是刘慈欣著名作品《三体2：黑暗森林》中的"智子"一词的官方英文翻译。
 
