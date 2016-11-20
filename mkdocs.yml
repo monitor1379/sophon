@@ -4,8 +4,8 @@ docs_dir: mddocs
 
 site_dir: docs
 
-theme: readthedocs
-# theme: yeti
+#theme: readthedocs
+theme: yeti
 #theme: united
 #theme: alabaster
 
