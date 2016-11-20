@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>API - Sophon</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API";
+    var mkdocs_page_input_path = "api\sophon.md";
+    var mkdocs_page_url = "/api/sophon/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Sophon</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#sophon">Sophon</a></li>
+                
+                    <li><a class="toctree-l4" href="#code_snippet">code_snippet</a></li>
+                
+                    <li><a class="toctree-l4" href="#extract_function_signature">extract_function_signature</a></li>
+                
+                    <li><a class="toctree-l4" href="#extract_class_signature">extract_class_signature</a></li>
+                
+                    <li><a class="toctree-l4" href="#extract_function_docstring">extract_function_docstring</a></li>
+                
+                    <li><a class="toctree-l4" href="#extract_class_docstring">extract_class_docstring</a></li>
+                
+                    <li><a class="toctree-l4" href="#generate_function_markdown">generate_function_markdown</a></li>
+                
+                    <li><a class="toctree-l4" href="#generate_class_markdown">generate_class_markdown</a></li>
+                
+                    <li><a class="toctree-l4" href="#import_from_name">import_from_name</a></li>
+                
+                    <li><a class="toctree-l4" href="#sophon_build">sophon_build</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Sophon</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sophon">Sophon</h1>
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L226">[source]</a></span></p>
+<h2 id="code_snippet">code_snippet</h2>
+<pre><code class="python">code_snippet(snippet)
+</code></pre>
+
+<p>Change a string-typed code snippet into markdown-style code fence.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>snippet</strong>: <code>str</code>. a code snippet.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. markdown-style code fence.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L26">[source]</a></span></p>
+<h2 id="extract_function_signature">extract_function_signature</h2>
+<pre><code class="python">extract_function_signature(function, ismethod=False)
+</code></pre>
+
+<p>Given a function, return the signature string of function.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>function</strong>: <code>function object</code>.</li>
+<li><strong>ismethod</strong>: <code>boolean</code>. represents that the function is a method of a class or not.
+    Note that if a "method" of class is static, then it is a <code>function</code> instead of <code>method</code>.
+    The simplest way to distinguish <code>function</code> and <code>method</code> is to see if there is a argument
+    named <code>self</code> in the arguments list of the function.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. A string signature of function.</p>
+<p><strong>Examples</strong></p>
+<p>Assume that there are some functions in a module named <code>mod</code>:</p>
+<pre><code class="python"># mod.py
+import sophon
+
+def foo1():
+    pass
+
+def foo2(a, b='b', c=None, **kwargs):
+    pass
+
+print sophon.extract_function_signature(foo1)
+# print &quot;mod.foo1()&quot; to the console
+
+print sophon.extract_function_signature(foo2)
+# print &quot;mod.foo2(a, b='b', c=None, **kwargs)&quot; to the console
+</code></pre>
+
+<p>now we add a class named <code>bar</code> to mod.py:</p>
+<pre><code class="python"># mod.py
+import sophon
+
+class bar(object):
+
+    def baz1(self):
+        pass
+
+    def baz2(self, a, b='b', c=None, **kwargs):
+        pass
+
+    @staticmethod
+    def baz3(a, b='b', c=None):
+        pass
+
+
+print sophon.extract_function_signature(bar.baz1, ismethod=True)
+# print &quot;mod.bar.baz1()&quot; to the console
+
+print sophon.extract_function_signature(bar.baz2, ismethod=True)
+# print &quot;mod.bar.baz2(a, b='b', c=None, **kwargs)&quot; to the console
+
+print sophon.extract_function_signature(bar.baz3, ismethod=False)
+# print &quot;mod.bar.baz3(a, b='b', c=None, **kwargs)&quot; to the console
+</code></pre>
+
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L126">[source]</a></span></p>
+<h2 id="extract_class_signature">extract_class_signature</h2>
+<pre><code class="python">extract_class_signature(clazz)
+</code></pre>
+
+<p>Given a class, return the signature string of function <code>class.__init__</code>.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>clazz</strong>: <code>class object</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. A string signature of function <code>class.__init__</code>.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="python"># mod.py
+import sophon
+
+class foo(object):
+    def __init__(self):
+        pass
+
+class bar(object):
+    def __init__(self, a, b='b', c=None, **kwargs):
+        pass
+
+print extract_class_signature(foo)
+# print &quot;mod.foo()&quot; to the console
+
+print extract_class_signature(bar)
+# print &quot;mod.bar(a, b='b', c=None, **kwargs)&quot; to the console
+</code></pre>
+
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L165">[source]</a></span></p>
+<h2 id="extract_function_docstring">extract_function_docstring</h2>
+<pre><code class="python">extract_function_docstring(function)
+</code></pre>
+
+<p>Extract the docstring of function and change it into standard markdown style.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>function</strong>: <code>function object</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. markdown docstring of the function.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L193">[source]</a></span></p>
+<h2 id="extract_class_docstring">extract_class_docstring</h2>
+<pre><code class="python">extract_class_docstring(clazz)
+</code></pre>
+
+<p>Extract the docstring of class and change it into standard markdown style.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>clazz</strong>: <code>class object</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. markdown docstring of the class.</p>
+<p><strong>Note</strong></p>
+<p>Only extract the docstring of class, excluding members of the given class.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="python">import sophon
+
+class foo(object):
+    '''This is docstring of foo
+    '''
+
+    def bar(self):
+        '''This is docstring of bar
+        '''
+        pass
+
+print sophon.extract_class_docstring(foo)
+# print &quot;This is docstring of foo&quot; to the console
+
+</code></pre>
+
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L277">[source]</a></span></p>
+<h2 id="generate_function_markdown">generate_function_markdown</h2>
+<pre><code class="python">generate_function_markdown(function, repo_url, branch)
+</code></pre>
+
+<p>Given a function object, generate markdown documents.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>function</strong>: <code>function object</code>.</li>
+<li><strong>repo_url</strong>: <code>str</code>. such as <code>https://github.com/yourusername/yourrepo</code></li>
+<li><strong>branch</strong>: <code>str</code>. repo branch.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. markdown documents of the function.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L302">[source]</a></span></p>
+<h2 id="generate_class_markdown">generate_class_markdown</h2>
+<pre><code class="python">generate_class_markdown(clazz, repo_url=None, branch='master')
+</code></pre>
+
+<p>Given a class object, generate markdown documents.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>clazz</strong>: <code>class object</code>.</li>
+<li><strong>repo_url</strong>: <code>str</code>. such as <code>https://github.com/yourusername/yourrepo</code></li>
+<li><strong>branch</strong>: <code>str</code>. repo branch.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>str</code>. markdown documents of the class.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L242">[source]</a></span></p>
+<h2 id="import_from_name">import_from_name</h2>
+<pre><code class="python">import_from_name(name)
+</code></pre>
+
+<p>Import module from string.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>name</strong>: <code>str</code>. such as <code>foo</code>, <code>foo.someclass</code> or <code>foo.somefunction</code>.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p><code>module object</code>. it could be module-typed, class-typed or function-typed.</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L326">[source]</a></span></p>
+<h2 id="sophon_build">sophon_build</h2>
+<pre><code class="python">sophon_build(config_fn)
+</code></pre>
+
+<p>Build documents of python project given the configuration filename</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>config_fn</strong>: <code>str</code>. Sophon configuration filename.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<p>None</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (c) 2016 Zhenpeng Deng</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>

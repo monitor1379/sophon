@@ -1,0 +1,23 @@
+#code_dir: .
+template_dir: templates
+build_dir: api
+
+repo_url: https://github.com/monitor1379/sophon
+branch: master
+
+pages:
+
+- page: sophon.md
+  template: sophon.md
+  tags:
+  - tag: tag0
+    functions:
+    - sophon.core.code_snippet
+    - sophon.core.extract_function_signature
+    - sophon.core.extract_class_signature
+    - sophon.core.extract_function_docstring
+    - sophon.core.extract_class_docstring
+    - sophon.core.generate_function_markdown
+    - sophon.core.generate_class_markdown
+    - sophon.core.import_from_name
+    - sophon.core.sophon_build

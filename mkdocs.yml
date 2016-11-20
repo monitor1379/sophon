@@ -1,5 +1,8 @@
 site_name: Sophon
-docs_dir: docs
+
+docs_dir: mddocs
+
+site_dir: docs
 
 theme: readthedocs
 # theme: yeti
