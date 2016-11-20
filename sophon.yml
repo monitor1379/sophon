@@ -1,4 +1,4 @@
-code_dir: .
+#code_dir: .
 template_dir: templates
 build_dir: api
 
@@ -10,7 +10,7 @@ pages:
 - page: sophon.md
   template: sophon.md
   tags:
-  - tag:
+  - tag: tag0
     functions:
     - sophon.core.code_snippet
     - sophon.core.extract_function_signature
