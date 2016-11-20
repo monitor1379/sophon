@@ -1,0 +1,51 @@
+# 指定要抽取的代码的所在目录
+# 设置该目录的目的为了保证python module能够被导入
+# 可以没有，默认为.
+code_dir: .
+
+# 可以没有，默认为None
+# 如果没有模板，则所有tag对应的markdown doc对应添加在page文件末尾
+template_dir: templates
+
+# 可以没有，默认为./api
+build_dir:
+
+# 需要注意，上述两个路径，可以是绝对路径，可以是相对路径
+# 如果是相对路径，则是相对于本配置文件而言
+
+
+# 可以没有，默认为None
+pages:
+
+# 如果有page，则在build_dir/下生成名为page的文件
+- page: index.md
+
+- page: user/bb.md  # build_dir/user/bb.md
+  # 如果指定了该文件的模板，且template_dir存在，则使用模板。
+  # 如果指定了该文件的模板，而template_dir不存在，则报错
+  # 如果指定了该文件的模板，且template_dir存在，但模板文件不存在，则报错
+  # 如果没有指定该文件的模板，则不用模板，即创建空白page然后添加doc到文件末尾
+  template: user/bb.md  # template_dir/user/bb.md
+
+
+- page: cc.md
+  template: cc_temp.md
+  # 如果没有tags，则不从代码中生成markdown。
+    # 如果指定了模板文件，则page内容为模板文件的内容
+    # 如果没有指定模板文件，则page内容为空
+  # 如果有tags，则对每个tag生成markdown
+    # 如果指定了template，则将template文件中的每个{{tag标记}}置换为对应的markdown
+    # 如果没有指定template，tags的位置作用失效，所有markdown添加到文件末尾
+  tags:
+  # 每一个tag都有一个tag名，用于表示doc在文件中的位置
+  # 如果有tag名，则置换{{tag}}为markdown内容
+  # 如果没有tag名，则生成的doc添加在page的末尾
+  # 如果tag内容为空，则表示markdown doc为空字符串''
+
+  - tag: tag1
+    functions:
+    - sss.gates.foo
+  - tag: tag2
+    classes:
+    - sss.gates.Dense
+    - sss.gates.Person
