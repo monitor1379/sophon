@@ -1,31 +1,11 @@
-# Sophon
+# sophon/core.py
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L226)</span>
-
-## code_snippet
-
-```python
-code_snippet(snippet)
-```
-
-Change a string-typed code snippet into markdown-style code fence.
-
-**Arguments**
-
-- **snippet**: `str`. a code snippet.
-
-**Returns**
-
-`str`. markdown-style code fence.
-
----
-
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L26)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L6)</span>
 
 ## extract_function_signature
 
 ```python
-extract_function_signature(function, ismethod=False)
+sophon.utils.extract_function_signature()
 ```
 
 Given a function, return the signature string of function.
@@ -92,12 +72,12 @@ print sophon.extract_function_signature(bar.baz3, ismethod=False)
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L126)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L106)</span>
 
 ## extract_class_signature
 
 ```python
-extract_class_signature(clazz)
+sophon.utils.extract_class_signature()
 ```
 
 Given a class, return the signature string of function `class.__init__`.
@@ -133,119 +113,32 @@ print extract_class_signature(bar)
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L165)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L145)</span>
 
-## extract_function_docstring
+## code_snippet
 
 ```python
-extract_function_docstring(function)
+sophon.utils.code_snippet()
 ```
 
-Extract the docstring of function and change it into standard markdown style.
+Change a string-typed code snippet into markdown-style code fence.
 
 **Arguments**
 
-- **function**: `function object`.
+- **snippet**: `str`. a code snippet.
 
 **Returns**
 
-`str`. markdown docstring of the function.
+`str`. markdown-style code fence.
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L193)</span>
-
-## extract_class_docstring
-
-```python
-extract_class_docstring(clazz)
-```
-
-Extract the docstring of class and change it into standard markdown style.
-
-**Arguments**
-
-- **clazz**: `class object`.
-
-**Returns**
-
-`str`. markdown docstring of the class.
-
-**Note**
-
-Only extract the docstring of class, excluding members of the given class.
-
-**Examples**
-
-```python
-import sophon
-
-class foo(object):
-    '''This is docstring of foo
-    '''
-
-    def bar(self):
-        '''This is docstring of bar
-        '''
-        pass
-
-print sophon.extract_class_docstring(foo)
-# print "This is docstring of foo" to the console
-
-```
-
----
-
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L277)</span>
-
-## generate_function_markdown
-
-```python
-generate_function_markdown(function, repo_url, branch)
-```
-
-Given a function object, generate markdown documents.
-
-**Arguments**
-
-- **function**: `function object`.
-- **repo_url**: `str`. such as `https://github.com/yourusername/yourrepo`
-- **branch**: `str`. repo branch.
-
-**Returns**
-
-`str`. markdown documents of the function.
-
----
-
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L302)</span>
-
-## generate_class_markdown
-
-```python
-generate_class_markdown(clazz, repo_url=None, branch='master')
-```
-
-Given a class object, generate markdown documents.
-
-**Arguments**
-
-- **clazz**: `class object`.
-- **repo_url**: `str`. such as `https://github.com/yourusername/yourrepo`
-- **branch**: `str`. repo branch.
-
-**Returns**
-
-`str`. markdown documents of the class.
-
----
-
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L242)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L158)</span>
 
 ## import_from_name
 
 ```python
-import_from_name(name)
+sophon.utils.import_from_name()
 ```
 
 Import module from string.
@@ -260,23 +153,85 @@ Import module from string.
 
 ---
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L326)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L174)</span>
 
-## sophon_build
+## generate_repo_link
 
 ```python
-sophon_build(config_fn)
+sophon.utils.generate_repo_link()
 ```
 
-Build documents of python project given the configuration filename
+Get the definition position of obj in source file, then link it to GitHub repo.
 
 **Arguments**
 
-- **config_fn**: `str`. Sophon configuration filename.
+- **obj**: `function object` or `class object`.
+- **repo_url**: `str`. such as `https://github.com/yourusername/yourrepo`
+- **branch**: `str`. repo branch.
 
 **Returns**
 
-None
+`str`. Return the hyperlink of obj.
+
+---
+
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/parsers.py#L10)</span>
+
+## Parser
+
+```python
+sophon.parsers.Parser()
+```
+
+
+
+---
+
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/parsers.py#L24)</span>
+
+## SophonParser
+
+```python
+sophon.parsers.SophonParser()
+```
+
+
+
+---
+
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/parsers.py#L81)</span>
+
+## ReStructuredTextParser
+
+```python
+sophon.parsers.ReStructuredTextParser()
+```
+
+
+
+---
+
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/parsers.py#L98)</span>
+
+## GoogleDocParser
+
+```python
+sophon.parsers.GoogleDocParser()
+```
+
+
+
+---
+
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/parsers.py#L115)</span>
+
+## NumPyDocParser
+
+```python
+sophon.parsers.NumPyDocParser()
+```
+
+
 
 ---
 

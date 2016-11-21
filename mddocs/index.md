@@ -3,9 +3,10 @@
 
 ## What is Sophon?
 
-Sophon is a **automatic markdown documentation generator** that makes it easy to create
+Sophon is a **markdown API documentation automatic generator** that makes it easy to create
 intelligent and beautiful documentation,
 written by Zhenpeng Deng and licensed under the MIT license.
+
 
 ## Why Sophon?
 

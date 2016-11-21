@@ -3,7 +3,7 @@
 import sophon
 
 def run():
-    sophon.sophon_build('sophon.yml')
+    sophon.build.build_from_yaml('sophon.yml')
 
 
 if __name__ == '__main__':

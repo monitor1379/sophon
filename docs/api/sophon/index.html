@@ -90,48 +90,27 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#sophon">Sophon</a></li>
-        
-            <li><a href="#code_snippet">code_snippet</a></li>
+        <li class="main active"><a href="#sophoncorepy">sophon/core.py</a></li>
         
             <li><a href="#extract_function_signature">extract_function_signature</a></li>
         
             <li><a href="#extract_class_signature">extract_class_signature</a></li>
         
-            <li><a href="#extract_function_docstring">extract_function_docstring</a></li>
-        
-            <li><a href="#extract_class_docstring">extract_class_docstring</a></li>
-        
-            <li><a href="#generate_function_markdown">generate_function_markdown</a></li>
-        
-            <li><a href="#generate_class_markdown">generate_class_markdown</a></li>
+            <li><a href="#code_snippet">code_snippet</a></li>
         
             <li><a href="#import_from_name">import_from_name</a></li>
         
-            <li><a href="#sophon_build">sophon_build</a></li>
+            <li><a href="#generate_repo_link">generate_repo_link</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="sophon">Sophon</h1>
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L226">[source]</a></span></p>
-<h2 id="code_snippet">code_snippet</h2>
-<pre><code class="python">code_snippet(snippet)
-</code></pre>
-
-<p>Change a string-typed code snippet into markdown-style code fence.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>snippet</strong>: <code>str</code>. a code snippet.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>str</code>. markdown-style code fence.</p>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L26">[source]</a></span></p>
+<h1 id="sophoncorepy">sophon/core.py</h1>
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L6">[source]</a></span></p>
 <h2 id="extract_function_signature">extract_function_signature</h2>
-<pre><code class="python">extract_function_signature(function, ismethod=False)
+<pre><code class="python">sophon.utils.extract_function_signature(function, ismethod=False)
 </code></pre>
 
 <p>Given a function, return the signature string of function.</p>
@@ -191,9 +170,9 @@ print sophon.extract_function_signature(bar.baz3, ismethod=False)
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L126">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L106">[source]</a></span></p>
 <h2 id="extract_class_signature">extract_class_signature</h2>
-<pre><code class="python">extract_class_signature(clazz)
+<pre><code class="python">sophon.utils.extract_class_signature(clazz)
 </code></pre>
 
 <p>Given a class, return the signature string of function <code>class.__init__</code>.</p>
@@ -223,84 +202,22 @@ print extract_class_signature(bar)
 </code></pre>
 
 <hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L165">[source]</a></span></p>
-<h2 id="extract_function_docstring">extract_function_docstring</h2>
-<pre><code class="python">extract_function_docstring(function)
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L145">[source]</a></span></p>
+<h2 id="code_snippet">code_snippet</h2>
+<pre><code class="python">sophon.utils.code_snippet(snippet)
 </code></pre>
 
-<p>Extract the docstring of function and change it into standard markdown style.</p>
+<p>Change a string-typed code snippet into markdown-style code fence.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>function</strong>: <code>function object</code>.</li>
+<li><strong>snippet</strong>: <code>str</code>. a code snippet.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p><code>str</code>. markdown docstring of the function.</p>
+<p><code>str</code>. markdown-style code fence.</p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L193">[source]</a></span></p>
-<h2 id="extract_class_docstring">extract_class_docstring</h2>
-<pre><code class="python">extract_class_docstring(clazz)
-</code></pre>
-
-<p>Extract the docstring of class and change it into standard markdown style.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>clazz</strong>: <code>class object</code>.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>str</code>. markdown docstring of the class.</p>
-<p><strong>Note</strong></p>
-<p>Only extract the docstring of class, excluding members of the given class.</p>
-<p><strong>Examples</strong></p>
-<pre><code class="python">import sophon
-
-class foo(object):
-    '''This is docstring of foo
-    '''
-
-    def bar(self):
-        '''This is docstring of bar
-        '''
-        pass
-
-print sophon.extract_class_docstring(foo)
-# print &quot;This is docstring of foo&quot; to the console
-
-</code></pre>
-
-<hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L277">[source]</a></span></p>
-<h2 id="generate_function_markdown">generate_function_markdown</h2>
-<pre><code class="python">generate_function_markdown(function, repo_url, branch)
-</code></pre>
-
-<p>Given a function object, generate markdown documents.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>function</strong>: <code>function object</code>.</li>
-<li><strong>repo_url</strong>: <code>str</code>. such as <code>https://github.com/yourusername/yourrepo</code></li>
-<li><strong>branch</strong>: <code>str</code>. repo branch.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>str</code>. markdown documents of the function.</p>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L302">[source]</a></span></p>
-<h2 id="generate_class_markdown">generate_class_markdown</h2>
-<pre><code class="python">generate_class_markdown(clazz, repo_url=None, branch='master')
-</code></pre>
-
-<p>Given a class object, generate markdown documents.</p>
-<p><strong>Arguments</strong></p>
-<ul>
-<li><strong>clazz</strong>: <code>class object</code>.</li>
-<li><strong>repo_url</strong>: <code>str</code>. such as <code>https://github.com/yourusername/yourrepo</code></li>
-<li><strong>branch</strong>: <code>str</code>. repo branch.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<p><code>str</code>. markdown documents of the class.</p>
-<hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L242">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L161">[source]</a></span></p>
 <h2 id="import_from_name">import_from_name</h2>
-<pre><code class="python">import_from_name(name)
+<pre><code class="python">sophon.utils.import_from_name(name)
 </code></pre>
 
 <p>Import module from string.</p>
@@ -311,18 +228,20 @@ print sophon.extract_class_docstring(foo)
 <p><strong>Returns</strong></p>
 <p><code>module object</code>. it could be module-typed, class-typed or function-typed.</p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/core.py#L326">[source]</a></span></p>
-<h2 id="sophon_build">sophon_build</h2>
-<pre><code class="python">sophon_build(config_fn)
+<p><span style="float:right;"><a href="https://github.com/monitor1379/sophon/blob/master/sophon/utils.py#L177">[source]</a></span></p>
+<h2 id="generate_repo_link">generate_repo_link</h2>
+<pre><code class="python">sophon.utils.generate_repo_link(obj, repo_url, branch)
 </code></pre>
 
-<p>Build documents of python project given the configuration filename</p>
+<p>Get the definition position of obj in source file, then link it to GitHub repo.</p>
 <p><strong>Arguments</strong></p>
 <ul>
-<li><strong>config_fn</strong>: <code>str</code>. Sophon configuration filename.</li>
+<li><strong>obj</strong>: <code>function object</code> or <code>class object</code>.</li>
+<li><strong>repo_url</strong>: <code>str</code>. such as <code>https://github.com/yourusername/yourrepo</code></li>
+<li><strong>branch</strong>: <code>str</code>. repo branch.</li>
 </ul>
 <p><strong>Returns</strong></p>
-<p>None</p>
+<p><code>str</code>. Return the hyperlink of obj.</p>
 <hr /></div>
         </div>
 
