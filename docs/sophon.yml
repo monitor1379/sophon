@@ -9,16 +9,24 @@ style: sophon
 
 pages:
 
-- page: sophon.md
-  template: sophon.md
+- page: sophon/API.md
+  template: sophon/API.md
   tags:
-  - tag: tag0
+  - tag: parsers
+    classes:
+    - sophon.parsers.Parser
+    - sophon.parsers.ReStructuredTextParser
+    - sophon.parsers.GoogleDocParser
+    - sophon.parsers.NumPyDocParser
+    classes_with_methods:
+    - sophon.parsers.SophonParser
+  - tag: utils
     functions:
     - sophon.utils.extract_function_signature
     - sophon.utils.extract_class_signature
     - sophon.utils.code_snippet
     - sophon.utils.import_from_name
     - sophon.utils.generate_repo_link
-    classes:
-    - sophon.parsers.Parser
-    - sophon.parsers.SophonParser
+  - tag: build
+    functions:
+    - sophon.build.build_from_yaml

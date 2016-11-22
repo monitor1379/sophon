@@ -43,9 +43,13 @@ pages:
   # 如果tag内容为空，则表示markdown doc为空字符串''
 
   - tag: tag1
+    # 每个tag的doc生成顺序并不是tag内部决定，而是classes->classes_with_members->functions
     functions:
     - sss.gates.foo
   - tag: tag2
     classes:
     - sss.gates.Dense
     - sss.gates.Person
+    # 后续支持
+    # classes_with_members:
+    #

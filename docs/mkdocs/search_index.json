@@ -26,39 +26,114 @@
             "title": "What does \"Sophon\" mean?"
         }, 
         {
-            "location": "/api/sophon/", 
-            "text": "sophon/core.py\n\n\n[source]\n\n\nextract_function_signature\n\n\nsophon.utils.extract_function_signature(function, ismethod=False)\n\n\n\n\nGiven a function, return the signature string of function.\n\n\nArguments\n\n\n\n\nfunction\n: \nfunction object\n.\n\n\nismethod\n: \nboolean\n. represents that the function is a method of a class or not.\n    Note that if a \"method\" of class is static, then it is a \nfunction\n instead of \nmethod\n.\n    The simplest way to distinguish \nfunction\n and \nmethod\n is to see if there is a argument\n    named \nself\n in the arguments list of the function.\n\n\n\n\nReturns\n\n\nstr\n. A string signature of function.\n\n\nExamples\n\n\nAssume that there are some functions in a module named \nmod\n:\n\n\n# mod.py\nimport sophon\n\ndef foo1():\n    pass\n\ndef foo2(a, b='b', c=None, **kwargs):\n    pass\n\nprint sophon.extract_function_signature(foo1)\n# print \nmod.foo1()\n to the console\n\nprint sophon.extract_function_signature(foo2)\n# print \nmod.foo2(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\nnow we add a class named \nbar\n to mod.py:\n\n\n# mod.py\nimport sophon\n\nclass bar(object):\n\n    def baz1(self):\n        pass\n\n    def baz2(self, a, b='b', c=None, **kwargs):\n        pass\n\n    @staticmethod\n    def baz3(a, b='b', c=None):\n        pass\n\n\nprint sophon.extract_function_signature(bar.baz1, ismethod=True)\n# print \nmod.bar.baz1()\n to the console\n\nprint sophon.extract_function_signature(bar.baz2, ismethod=True)\n# print \nmod.bar.baz2(a, b='b', c=None, **kwargs)\n to the console\n\nprint sophon.extract_function_signature(bar.baz3, ismethod=False)\n# print \nmod.bar.baz3(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\n\n\n[source]\n\n\nextract_class_signature\n\n\nsophon.utils.extract_class_signature(clazz)\n\n\n\n\nGiven a class, return the signature string of function \nclass.__init__\n.\n\n\nArguments\n\n\n\n\nclazz\n: \nclass object\n.\n\n\n\n\nReturns\n\n\nstr\n. A string signature of function \nclass.__init__\n.\n\n\nExamples\n\n\n# mod.py\nimport sophon\n\nclass foo(object):\n    def __init__(self):\n        pass\n\nclass bar(object):\n    def __init__(self, a, b='b', c=None, **kwargs):\n        pass\n\nprint extract_class_signature(foo)\n# print \nmod.foo()\n to the console\n\nprint extract_class_signature(bar)\n# print \nmod.bar(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\n\n\n[source]\n\n\ncode_snippet\n\n\nsophon.utils.code_snippet(snippet)\n\n\n\n\nChange a string-typed code snippet into markdown-style code fence.\n\n\nArguments\n\n\n\n\nsnippet\n: \nstr\n. a code snippet.\n\n\n\n\nReturns\n\n\nstr\n. markdown-style code fence.\n\n\n\n\n[source]\n\n\nimport_from_name\n\n\nsophon.utils.import_from_name(name)\n\n\n\n\nImport module from string.\n\n\nArguments\n\n\n\n\nname\n: \nstr\n. such as \nfoo\n, \nfoo.someclass\n or \nfoo.somefunction\n.\n\n\n\n\nReturns\n\n\nmodule object\n. it could be module-typed, class-typed or function-typed.\n\n\n\n\n[source]\n\n\ngenerate_repo_link\n\n\nsophon.utils.generate_repo_link(obj, repo_url, branch)\n\n\n\n\nGet the definition position of obj in source file, then link it to GitHub repo.\n\n\nArguments\n\n\n\n\nobj\n: \nfunction object\n or \nclass object\n.\n\n\nrepo_url\n: \nstr\n. such as \nhttps://github.com/yourusername/yourrepo\n\n\nbranch\n: \nstr\n. repo branch.\n\n\n\n\nReturns\n\n\nstr\n. Return the hyperlink of obj.", 
+            "location": "/user_guide/", 
+            "text": "", 
+            "title": "User Guide"
+        }, 
+        {
+            "location": "/configuration/", 
+            "text": "", 
+            "title": "Configuration"
+        }, 
+        {
+            "location": "/api/sophon/API/", 
+            "text": "API documentations of Sophon\n\n\nThis is some API documentations of Sophon.\n\n\nsophon/parsers.py\n\n\n[source]\n\n\nParser\n\n\nsophon.parsers.Parser.Parser()\n\n\n\n\nTop level base class of parsers.\n\n\n\n\n[source]\n\n\nReStructuredTextParser\n\n\nsophon.parsers.ReStructuredTextParser.ReStructuredTextParser()\n\n\n\n\nSupport soon.\n\n\n\n\n[source]\n\n\nGoogleDocParser\n\n\nsophon.parsers.GoogleDocParser.GoogleDocParser()\n\n\n\n\nSupport soon.\n\n\n\n\n[source]\n\n\nNumPyDocParser\n\n\nsophon.parsers.NumPyDocParser.NumPyDocParser()\n\n\n\n\nSupport soon.\n\n\n\n\nSophonParser\n\n\nsophon.parsers.SophonParser.SophonParser()\n\n\n\n\nA docstring parser for parsing Sophon style docstring to Markdown.\n\n\n\n\n[source]\n\n\nSophonParser.parse_from_class\n\n\nsophon.parsers.SophonParser.parse_from_class(class_, **kwargs)\n\n\n\n\nExtract docstring from class and parse it to Markdown text.\n\n\nArguments\n\n\n\n\nclass_\n: \nclass\n. A class with Sophon style docstring.\n\n\n**kwargs\n: \ndict\n.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Markdown text.\n\n\n\n\n\n\n[source]\n\n\nSophonParser.parse_from_class_with_methods\n\n\nsophon.parsers.SophonParser.parse_from_class_with_methods(class_, **kwargs)\n\n\n\n\nExtract docstring from class and its public members, and parse it to Markdown text.\n\n\nArguments\n\n\n\n\nclass_\n: \nclass\n. A class with Sophon style docstring.\n\n\n**kwargs\n: \ndict\n.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Markdown text.\n\n\n\n\n\n\n[source]\n\n\nSophonParser.parse_from_docstring\n\n\nsophon.parsers.SophonParser.parse_from_docstring(docstring, **kwargs)\n\n\n\n\nParse Sophon style docstring to Markdown text.\n\n\nArguments\n\n\n\n\ndocstring\n: \nstr\n. Sophon style docstring.\n\n\n**kwargs\n: \ndict\n.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Markdown text.\n\n\n\n\n\n\n[source]\n\n\nSophonParser.parse_from_function\n\n\nsophon.parsers.SophonParser.parse_from_function(function, **kwargs)\n\n\n\n\nExtract docstring from function and parse it to Markdown text.\n\n\nArguments\n\n\n\n\nfunction\n: \nfunction\n. A function with Sophon style docstring.\n\n\n**kwargs\n: \ndict\n.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Markdown text.\n\n\n\n\n\n\nsophon/utils.py\n\n\n[source]\n\n\nextract_function_signature\n\n\nsophon.utils.extract_function_signature(function, ismethod=False)\n\n\n\n\nGiven a function, return the signature string of function.\n\n\nArguments\n\n\n\n\nfunction\n: \nfunction\n.\n\n\nismethod\n: \nboolean\n. Represent that if the given function is a method of a class or not.\n    Note that if a \"method\" of class is static, then it is a \nfunction\n instead of \nmethod\n.\n    The simplest way to distinguish \nfunction\n and \nmethod\n is to see if there is a argument\n    named \nself\n in the arguments list of the function.\n\n\n\n\nReturn\n\n\n\n\nstr\n: A string signature of function.\n\n\n\n\nExamples\n\n\nAssume that there are some functions in a module named \nmod\n:\n\n\n# mod.py\nimport sophon\n\ndef foo1():\n    pass\n\ndef foo2(a, b='b', c=None, **kwargs):\n    pass\n\nprint sophon.extract_function_signature(foo1)\n# print \nmod.foo1()\n to the console\n\nprint sophon.extract_function_signature(foo2)\n# print \nmod.foo2(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\nNow we add a class named \nbar\n to mod.py:\n\n\n# mod.py\nimport sophon\n\nclass bar(object):\n\n    def baz1(self):\n        pass\n\n    def baz2(self, a, b='b', c=None, **kwargs):\n        pass\n\n    @staticmethod\n    def baz3(a, b='b', c=None):\n        pass\n\n\nprint sophon.extract_function_signature(bar.baz1, ismethod=True)\n# print \nmod.bar.baz1()\n to the console\n\nprint sophon.extract_function_signature(bar.baz2, ismethod=True)\n# print \nmod.bar.baz2(a, b='b', c=None, **kwargs)\n to the console\n\nprint sophon.extract_function_signature(bar.baz3, ismethod=False)\n# print \nmod.bar.baz3(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\n\n\n[source]\n\n\nextract_class_signature\n\n\nsophon.utils.extract_class_signature(clazz)\n\n\n\n\nGiven a class, return the signature string of function \nclass.__init__\n.\n\n\nArgument\n\n\n\n\nclazz\n: \nclass object\n.\n\n\n\n\nReturn\n\n\n\n\nstr\n: A string signature of function \nclass.__init__\n.\n\n\n\n\nExamples\n\n\n# mod.py\nimport sophon\n\nclass foo(object):\n    def __init__(self):\n        pass\n\nclass bar(object):\n    def __init__(self, a, b='b', c=None, **kwargs):\n        pass\n\nprint extract_class_signature(foo)\n# print \nmod.foo()\n to the console\n\nprint extract_class_signature(bar)\n# print \nmod.bar(a, b='b', c=None, **kwargs)\n to the console\n\n\n\n\n\n\n[source]\n\n\ncode_snippet\n\n\nsophon.utils.code_snippet(snippet)\n\n\n\n\nChange a string-typed code snippet into Markdown-style code fence.\n\n\nArgument\n\n\n\n\nsnippet\n: \nstr\n. A code snippet.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Markdown-style code fence.\n\n\n\n\n\n\n[source]\n\n\nimport_from_name\n\n\nsophon.utils.import_from_name(name)\n\n\n\n\nImport module from string.\n\n\nArgument\n\n\n\n\nname\n: \nstr\n. Such as \nfoo\n, \nfoo.someclass\n or \nfoo.somefunction\n.\n\n\n\n\nReturn\n\n\n\n\nmodule\n: It could be module-typed, class-typed or function-typed.\n\n\n\n\n\n\n[source]\n\n\ngenerate_repo_link\n\n\nsophon.utils.generate_repo_link(obj, repo_url, branch)\n\n\n\n\nGet the definition position of obj in source file, then link it to GitHub repo.\n\n\nArguments\n\n\n\n\nobj\n: \nfunction object\n or \nclass object\n.\n\n\nrepo_url\n: \nstr\n. such as \nhttps://github.com/yourusername/yourrepo\n\n\nbranch\n: \nstr\n. repo branch.\n\n\n\n\nReturn\n\n\n\n\nstr\n: Return the hyperlink of obj.\n\n\n\n\n\n\nsophon/build.py\n\n\n[source]\n\n\nbuild_from_yaml\n\n\nsophon.build.build_from_yaml(config_fn)\n\n\n\n\nBuild documentations of python project given the configuration filename.\n\n\nArgument\n\n\n\n\nconfig_fn\n: \nstr\n. Sophon configuration filename.\n\n\n\n\nReturn\n\n\nNone", 
             "title": "API"
         }, 
         {
-            "location": "/api/sophon/#sophoncorepy", 
-            "text": "[source]", 
-            "title": "sophon/core.py"
+            "location": "/api/sophon/API/#api-documentations-of-sophon", 
+            "text": "This is some API documentations of Sophon.", 
+            "title": "API documentations of Sophon"
         }, 
         {
-            "location": "/api/sophon/#extract_function_signature", 
-            "text": "sophon.utils.extract_function_signature(function, ismethod=False)  Given a function, return the signature string of function.  Arguments   function :  function object .  ismethod :  boolean . represents that the function is a method of a class or not.\n    Note that if a \"method\" of class is static, then it is a  function  instead of  method .\n    The simplest way to distinguish  function  and  method  is to see if there is a argument\n    named  self  in the arguments list of the function.   Returns  str . A string signature of function.  Examples  Assume that there are some functions in a module named  mod :  # mod.py\nimport sophon\n\ndef foo1():\n    pass\n\ndef foo2(a, b='b', c=None, **kwargs):\n    pass\n\nprint sophon.extract_function_signature(foo1)\n# print  mod.foo1()  to the console\n\nprint sophon.extract_function_signature(foo2)\n# print  mod.foo2(a, b='b', c=None, **kwargs)  to the console  now we add a class named  bar  to mod.py:  # mod.py\nimport sophon\n\nclass bar(object):\n\n    def baz1(self):\n        pass\n\n    def baz2(self, a, b='b', c=None, **kwargs):\n        pass\n\n    @staticmethod\n    def baz3(a, b='b', c=None):\n        pass\n\n\nprint sophon.extract_function_signature(bar.baz1, ismethod=True)\n# print  mod.bar.baz1()  to the console\n\nprint sophon.extract_function_signature(bar.baz2, ismethod=True)\n# print  mod.bar.baz2(a, b='b', c=None, **kwargs)  to the console\n\nprint sophon.extract_function_signature(bar.baz3, ismethod=False)\n# print  mod.bar.baz3(a, b='b', c=None, **kwargs)  to the console   [source]", 
+            "location": "/api/sophon/API/#sophonparserspy", 
+            "text": "[source]", 
+            "title": "sophon/parsers.py"
+        }, 
+        {
+            "location": "/api/sophon/API/#parser", 
+            "text": "sophon.parsers.Parser.Parser()  Top level base class of parsers.   [source]", 
+            "title": "Parser"
+        }, 
+        {
+            "location": "/api/sophon/API/#restructuredtextparser", 
+            "text": "sophon.parsers.ReStructuredTextParser.ReStructuredTextParser()  Support soon.   [source]", 
+            "title": "ReStructuredTextParser"
+        }, 
+        {
+            "location": "/api/sophon/API/#googledocparser", 
+            "text": "sophon.parsers.GoogleDocParser.GoogleDocParser()  Support soon.   [source]", 
+            "title": "GoogleDocParser"
+        }, 
+        {
+            "location": "/api/sophon/API/#numpydocparser", 
+            "text": "sophon.parsers.NumPyDocParser.NumPyDocParser()  Support soon.", 
+            "title": "NumPyDocParser"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonparser", 
+            "text": "sophon.parsers.SophonParser.SophonParser()  A docstring parser for parsing Sophon style docstring to Markdown.   [source]", 
+            "title": "SophonParser"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonparserparse_from_class", 
+            "text": "sophon.parsers.SophonParser.parse_from_class(class_, **kwargs)  Extract docstring from class and parse it to Markdown text.  Arguments   class_ :  class . A class with Sophon style docstring.  **kwargs :  dict .   Return   str : Markdown text.    [source]", 
+            "title": "SophonParser.parse_from_class"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonparserparse_from_class_with_methods", 
+            "text": "sophon.parsers.SophonParser.parse_from_class_with_methods(class_, **kwargs)  Extract docstring from class and its public members, and parse it to Markdown text.  Arguments   class_ :  class . A class with Sophon style docstring.  **kwargs :  dict .   Return   str : Markdown text.    [source]", 
+            "title": "SophonParser.parse_from_class_with_methods"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonparserparse_from_docstring", 
+            "text": "sophon.parsers.SophonParser.parse_from_docstring(docstring, **kwargs)  Parse Sophon style docstring to Markdown text.  Arguments   docstring :  str . Sophon style docstring.  **kwargs :  dict .   Return   str : Markdown text.    [source]", 
+            "title": "SophonParser.parse_from_docstring"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonparserparse_from_function", 
+            "text": "sophon.parsers.SophonParser.parse_from_function(function, **kwargs)  Extract docstring from function and parse it to Markdown text.  Arguments   function :  function . A function with Sophon style docstring.  **kwargs :  dict .   Return   str : Markdown text.", 
+            "title": "SophonParser.parse_from_function"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonutilspy", 
+            "text": "[source]", 
+            "title": "sophon/utils.py"
+        }, 
+        {
+            "location": "/api/sophon/API/#extract_function_signature", 
+            "text": "sophon.utils.extract_function_signature(function, ismethod=False)  Given a function, return the signature string of function.  Arguments   function :  function .  ismethod :  boolean . Represent that if the given function is a method of a class or not.\n    Note that if a \"method\" of class is static, then it is a  function  instead of  method .\n    The simplest way to distinguish  function  and  method  is to see if there is a argument\n    named  self  in the arguments list of the function.   Return   str : A string signature of function.   Examples  Assume that there are some functions in a module named  mod :  # mod.py\nimport sophon\n\ndef foo1():\n    pass\n\ndef foo2(a, b='b', c=None, **kwargs):\n    pass\n\nprint sophon.extract_function_signature(foo1)\n# print  mod.foo1()  to the console\n\nprint sophon.extract_function_signature(foo2)\n# print  mod.foo2(a, b='b', c=None, **kwargs)  to the console  Now we add a class named  bar  to mod.py:  # mod.py\nimport sophon\n\nclass bar(object):\n\n    def baz1(self):\n        pass\n\n    def baz2(self, a, b='b', c=None, **kwargs):\n        pass\n\n    @staticmethod\n    def baz3(a, b='b', c=None):\n        pass\n\n\nprint sophon.extract_function_signature(bar.baz1, ismethod=True)\n# print  mod.bar.baz1()  to the console\n\nprint sophon.extract_function_signature(bar.baz2, ismethod=True)\n# print  mod.bar.baz2(a, b='b', c=None, **kwargs)  to the console\n\nprint sophon.extract_function_signature(bar.baz3, ismethod=False)\n# print  mod.bar.baz3(a, b='b', c=None, **kwargs)  to the console   [source]", 
             "title": "extract_function_signature"
         }, 
         {
-            "location": "/api/sophon/#extract_class_signature", 
-            "text": "sophon.utils.extract_class_signature(clazz)  Given a class, return the signature string of function  class.__init__ .  Arguments   clazz :  class object .   Returns  str . A string signature of function  class.__init__ .  Examples  # mod.py\nimport sophon\n\nclass foo(object):\n    def __init__(self):\n        pass\n\nclass bar(object):\n    def __init__(self, a, b='b', c=None, **kwargs):\n        pass\n\nprint extract_class_signature(foo)\n# print  mod.foo()  to the console\n\nprint extract_class_signature(bar)\n# print  mod.bar(a, b='b', c=None, **kwargs)  to the console   [source]", 
+            "location": "/api/sophon/API/#extract_class_signature", 
+            "text": "sophon.utils.extract_class_signature(clazz)  Given a class, return the signature string of function  class.__init__ .  Argument   clazz :  class object .   Return   str : A string signature of function  class.__init__ .   Examples  # mod.py\nimport sophon\n\nclass foo(object):\n    def __init__(self):\n        pass\n\nclass bar(object):\n    def __init__(self, a, b='b', c=None, **kwargs):\n        pass\n\nprint extract_class_signature(foo)\n# print  mod.foo()  to the console\n\nprint extract_class_signature(bar)\n# print  mod.bar(a, b='b', c=None, **kwargs)  to the console   [source]", 
             "title": "extract_class_signature"
         }, 
         {
-            "location": "/api/sophon/#code_snippet", 
-            "text": "sophon.utils.code_snippet(snippet)  Change a string-typed code snippet into markdown-style code fence.  Arguments   snippet :  str . a code snippet.   Returns  str . markdown-style code fence.   [source]", 
+            "location": "/api/sophon/API/#code_snippet", 
+            "text": "sophon.utils.code_snippet(snippet)  Change a string-typed code snippet into Markdown-style code fence.  Argument   snippet :  str . A code snippet.   Return   str : Markdown-style code fence.    [source]", 
             "title": "code_snippet"
         }, 
         {
-            "location": "/api/sophon/#import_from_name", 
-            "text": "sophon.utils.import_from_name(name)  Import module from string.  Arguments   name :  str . such as  foo ,  foo.someclass  or  foo.somefunction .   Returns  module object . it could be module-typed, class-typed or function-typed.   [source]", 
+            "location": "/api/sophon/API/#import_from_name", 
+            "text": "sophon.utils.import_from_name(name)  Import module from string.  Argument   name :  str . Such as  foo ,  foo.someclass  or  foo.somefunction .   Return   module : It could be module-typed, class-typed or function-typed.    [source]", 
             "title": "import_from_name"
         }, 
         {
-            "location": "/api/sophon/#generate_repo_link", 
-            "text": "sophon.utils.generate_repo_link(obj, repo_url, branch)  Get the definition position of obj in source file, then link it to GitHub repo.  Arguments   obj :  function object  or  class object .  repo_url :  str . such as  https://github.com/yourusername/yourrepo  branch :  str . repo branch.   Returns  str . Return the hyperlink of obj.", 
+            "location": "/api/sophon/API/#generate_repo_link", 
+            "text": "sophon.utils.generate_repo_link(obj, repo_url, branch)  Get the definition position of obj in source file, then link it to GitHub repo.  Arguments   obj :  function object  or  class object .  repo_url :  str . such as  https://github.com/yourusername/yourrepo  branch :  str . repo branch.   Return   str : Return the hyperlink of obj.", 
             "title": "generate_repo_link"
+        }, 
+        {
+            "location": "/api/sophon/API/#sophonbuildpy", 
+            "text": "[source]", 
+            "title": "sophon/build.py"
+        }, 
+        {
+            "location": "/api/sophon/API/#build_from_yaml", 
+            "text": "sophon.build.build_from_yaml(config_fn)  Build documentations of python project given the configuration filename.  Argument   config_fn :  str . Sophon configuration filename.   Return  None", 
+            "title": "build_from_yaml"
         }
     ]
 }

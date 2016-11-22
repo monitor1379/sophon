@@ -4,15 +4,31 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-11-21</lastmod>
+     <lastmod>2016-11-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/api/sophon/</loc>
-     <lastmod>2016-11-21</lastmod>
+     <loc>None/user_guide/</loc>
+     <lastmod>2016-11-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/configuration/</loc>
+     <lastmod>2016-11-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/api/sophon/API/</loc>
+     <lastmod>2016-11-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

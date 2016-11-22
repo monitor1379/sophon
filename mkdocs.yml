@@ -11,10 +11,13 @@ theme: yeti
 
 pages:
 - Home: index.md
-- API: api/sophon.md
+- User Guide: user_guide.md
+- Configuration: configuration.md
+- API: api/sophon/API.md
+
 
 # Copyright
-copyright: 'Copyright (c) 2016 Zhenpeng Deng'
+copyright: 'Copyright (c) 2016 <a href="http://www.monitor1379.com" target="blank">Zhenpeng Deng(monitor1379)</a>'
 
 
 markdown_extensions:

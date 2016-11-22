@@ -7,14 +7,14 @@ def extract_function_signature(function, ismethod=False):
     """Given a function, return the signature string of function.
 
     # Arguments
-        function: `function object`.
-        ismethod: `boolean`. represents that the function is a method of a class or not.
+        function: `function`.
+        ismethod: `boolean`. Represent that if the given function is a method of a class or not.
             Note that if a "method" of class is static, then it is a `function` instead of `method`.
             The simplest way to distinguish `function` and `method` is to see if there is a argument
             named `self` in the arguments list of the function.
 
-    # Returns
-        `str`. A string signature of function.
+    # Return
+        `str`: A string signature of function.
 
     # Examples
         Assume that there are some functions in a module named `mod`:
@@ -35,7 +35,7 @@ def extract_function_signature(function, ismethod=False):
         # print "mod.foo2(a, b='b', c=None, **kwargs)" to the console
         ```
 
-        now we add a class named `bar` to mod.py:
+        Now we add a class named `bar` to mod.py:
         ```python
         # mod.py
         import sophon
@@ -73,8 +73,10 @@ def extract_function_signature(function, ismethod=False):
     # remove the first argument 'self'
     if ismethod:
         args = argspec.args[1:]
+        signature = '{}.{}.{}'.format(function.__module__, function.im_class.__name__, function.__name__)
     else:
         args = argspec.args
+        signature = function.__module__ + '.' + function.__name__
 
     # if function has arguments with default value
     if defaults:
@@ -82,8 +84,6 @@ def extract_function_signature(function, ismethod=False):
         args = args[:-len(defaults)]
     else:
         kwargs = []
-
-    signature = function.__module__ + '.' + function.__name__
     signature += '('
     # add args
     for arg in args:
@@ -106,11 +106,11 @@ def extract_function_signature(function, ismethod=False):
 def extract_class_signature(clazz):
     """Given a class, return the signature string of function `class.__init__`.
 
-    # Arguments
+    # Argument
         clazz: `class object`.
 
-    # Returns
-        `str`. A string signature of function `class.__init__`.
+    # Return
+        `str`: A string signature of function `class.__init__`.
 
     # Examples
         ```python
@@ -143,13 +143,13 @@ def extract_class_signature(clazz):
 
 
 def code_snippet(snippet):
-    """Change a string-typed code snippet into markdown-style code fence.
+    """Change a string-typed code snippet into Markdown-style code fence.
 
-    # Arguments
-        snippet: `str`. a code snippet.
+    # Argument
+        snippet: `str`. A code snippet.
 
-    # Returns
-        `str`. markdown-style code fence.
+    # Return
+        `str`: Markdown-style code fence.
 
     """
     return '```python\n{}\n```'.format(snippet)
@@ -158,11 +158,11 @@ def code_snippet(snippet):
 def import_from_name(name):
     """Import module from string.
 
-    # Arguments
-        name: `str`. such as `foo`, `foo.someclass` or `foo.somefunction`.
+    # Argument
+        name: `str`. Such as `foo`, `foo.someclass` or `foo.somefunction`.
 
-    # Returns
-        `module object`. it could be module-typed, class-typed or function-typed.
+    # Return
+        `module`: It could be module-typed, class-typed or function-typed.
     """
     names = name.split('.')
     mod = __import__(names[0])
@@ -179,8 +179,8 @@ def generate_repo_link(obj, repo_url, branch):
         repo_url: `str`. such as `https://github.com/yourusername/yourrepo`
         branch: `str`. repo branch.
 
-    # Returns
-        `str`. Return the hyperlink of obj.
+    # Return
+        `str`: Return the hyperlink of obj.
     """
     module_name = obj.__module__
     path = module_name.replace('.', '/')

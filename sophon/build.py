@@ -15,7 +15,7 @@ default_build_dir = 'api'
 
 
 def _to_abs_path(directory, path):
-    """convert relative path to absolute path"""
+    """Convert relative path to absolute path"""
     if os.path.isabs(path):
         return os.path.normpath(path)
     else:
@@ -23,13 +23,13 @@ def _to_abs_path(directory, path):
 
 
 def build_from_yaml(config_fn):
-    """Build documents of python project given the configuration filename
+    """Build documentations of python project given the configuration filename.
 
-    # Arguments
+    # Argument
         config_fn: `str`. Sophon configuration filename.
 
-    # Returns
-        None
+    # Return
+        `None`
     """
     config_fn = os.path.abspath(config_fn)
     logger = ConsoleLogger()
@@ -61,7 +61,7 @@ def build_from_yaml(config_fn):
     build_dir = yml.get('build_dir')
     conf_dir = os.path.dirname(config_fn)
 
-    # for supporting absoluted path of sophon.yml
+    # for supporting absolute path of sophon.yml
     if code_dir:
         code_dir = _to_abs_path(conf_dir, code_dir)
     else:
@@ -142,7 +142,6 @@ def build_from_yaml(config_fn):
         with open(build_fn, 'r') as f:
             build_file_doc = f.read()
         # =======================================================
-        # for every tag
         for tag in tags:
             # ===============================
             tag_name = tag.get('tag')
@@ -152,21 +151,28 @@ def build_from_yaml(config_fn):
             logger.info('generateing doc...')
 
             # ===============================
-            # generate markdown from functions
-            functions = tag.get('functions')
-            if functions:
-                for function_name in functions:
-                    function = import_from_name(function_name)
-                    docstring = parser.parse_from_function(function, repo_url=repo_url, branch=branch)
-                    tag_doc += docstring
-
-            # ===============================
             # generate markdown from classes
             classes = tag.get('classes')
             if classes:
                 for class_name in classes:
                     class_ = import_from_name(class_name)
                     docstring = parser.parse_from_class(class_, repo_url=repo_url, branch=branch)
+                    tag_doc += docstring
+
+            classes_with_methods = tag.get('classes_with_methods')
+            if classes_with_methods:
+                for class_name in classes_with_methods:
+                    class_ = import_from_name(class_name)
+                    docstring = parser.parse_from_class_with_methods(class_, repo_url=repo_url, branch=branch)
+                    tag_doc += docstring
+
+            # ===============================
+            # generate markdown from functions
+            functions = tag.get('functions')
+            if functions:
+                for function_name in functions:
+                    function = import_from_name(function_name)
+                    docstring = parser.parse_from_function(function, repo_url=repo_url, branch=branch)
                     tag_doc += docstring
 
             # ===============================
