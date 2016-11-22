@@ -102,7 +102,7 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#welcome-to-sophons-documentations">Welcome to Sophon's Documentations</a></li>
+        <li class="main active"><a href="#sophon-automatic-api-markdown-documentation-generation-for-python">Sophon: Automatic API Markdown Documentation Generation for Python</a></li>
         
             <li><a href="#what-is-sophon">What is Sophon?</a></li>
         
@@ -113,18 +113,50 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-sophons-documentations">Welcome to Sophon's Documentations</h1>
+<h1 id="sophon-automatic-api-markdown-documentation-generation-for-python">Sophon: Automatic API Markdown Documentation Generation for Python</h1>
 <h2 id="what-is-sophon">What is Sophon?</h2>
-<p>Sophon is a <strong>markdown API documentation automatic generator</strong> that makes it easy to create
-intelligent and beautiful documentation,
-written by Zhenpeng Deng and licensed under the MIT license.</p>
+<p>Sophon is a tool that could <strong>automatically generate Markdown-format API documentations</strong> from Python docstring,
+just like Epydoc(supports reStructuredText、Javadoc、plaintext)
+and Napoleon(Sphinx extension that enables Sphinx to parse both NumPy and Google style docstrings to reStructuredText).</p>
+<p>Sophon is written by <a href="http://www.monitor1379.com">Zhenpeng Deng(monitor1379)</a> and licensed under the MIT license.</p>
 <h2 id="why-sophon">Why Sophon?</h2>
 <p>Features:</p>
 <ul>
-<li>Markdown formats.</li>
-<li>Automatic documentation.</li>
-<li>Flexible.</li>
-<li>Works on Windows, Linux and macOS.</li>
+<li>
+<p><strong>Support different kinds of docstrings.</strong>
+    reStructuredText is great, but docstring written in reST creates visually dense and is hard to read.
+    So Sophon mainly supports to parse docstring with the following styles and converts them to Markdown: </p>
+<ul>
+<li>Sophon style docstring</li>
+<li>(Coming Soon) <a href="http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html#example-google">Google style</a>, the style recommended by <a href="https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Docstrings">Khan Academy</a></li>
+<li>(Coming Soon) <a href="http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy">NumPy style</a>
+Sophon also supports to parse every docstring in Python project,
+including docstrings on: <code>classes</code>, <code>methods</code> and <code>functions</code>
+(<code>modules</code>, <code>attributes</code> and <code>variables</code> will be supported soon)</li>
+</ul>
+</li>
+<li>
+<p><strong>Output Markdown format documentations.</strong>
+    Markdown is a way to write contents for the web.
+    Unlike cumbersome word processing applications or other markup languages with complicated syntax,
+    text written in Markdown can be easy to read, easy to write and easily shared for between computers, 
+    mobile phones, and people. 
+    Though it does not do anything fancy like change the font size, color or type by itself,
+    it has enough stuffs to write an API documentation for your python projects.</p>
+<p>Another important reason of choosing Markdown is that there are some remarkable tools for Markdown
+to build beautiful documentations or blogs such as
+<a href="http://www.mkdocs.org">MkDocs(Project documentation with Markdown)</a> or <a href="https://hexo.io">Hexo(A fast, simple &amp; powerful blog framework)</a>.</p>
+</li>
+<li>
+<p><strong>Easily and Highly customizable.</strong>
+    Sophon uses <a href="http://www.yaml.org/">YAML: YAML Ain't Markup Language</a> as the format of configuration file.
+    By configuring and providing Markdown template files, you can freely organize your documentation,
+    or open some advanced features such as linking API to source files deposited on GitHub repositories.</p>
+</li>
+<li>
+<p><strong>One-Command build.</strong> 
+    you only need one command to build you API documentation.</p>
+</li>
 </ul>
 <h3 id="what-does-sophon-mean">What does "Sophon" mean?</h3>
 <p><strong>Sophon</strong> is the official translation of "<strong>智子</strong>" in 《Rememberance of Earth's Past II: The Dark Forest》

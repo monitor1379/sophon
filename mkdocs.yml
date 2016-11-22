@@ -6,8 +6,8 @@ site_dir: docs
 
 #theme: readthedocs
 theme: yeti
+#theme: material
 #theme: united
-#theme: alabaster
 
 pages:
 - Home: index.md

@@ -4,9 +4,6 @@
 
 Sophon is a tool that could automatically generate Markdown-format API documentation from Python code. 
 
-~~~python
-fuck
-~~~
 
 **markdown API documentation automatic generator** that 
 

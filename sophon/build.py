@@ -37,18 +37,18 @@ def build_from_yaml(config_fn):
     # load configuration from sophon.yml
     logger.info('Loading configuration file: {}'.format(config_fn))
     with open(config_fn, 'r') as f:
-        yml = yaml.load(f)
-    pages = yml.get('pages')  # necessary
+        config = yaml.load(f)
+    pages = config.get('pages')  # necessary
     if not pages:
         logger.warn('Sophon: There is no pages to build.')
         return
 
-    repo_url = yml.get('repo_url')
-    branch = yml.get('branch', 'master')
+    repo_url = config.get('repo_url')
+    branch = config.get('branch', 'master')
     logger.info('Using repo_url: {}'.format(repo_url))
     logger.info('Using branch: {}'.format(branch))
 
-    style = yml.get('style')
+    style = config.get('style')
     parser = parsers.get(style)
     if not parser:
         message = 'Invalid style:{}, only support Sophon/reStructuredText/Google/NumPy style!'.format(style)
@@ -56,9 +56,9 @@ def build_from_yaml(config_fn):
 
     # ==========================================================================
     # process build_dir and template_dir
-    code_dir = yml.get('code_dir')
-    template_dir = yml.get('template_dir')
-    build_dir = yml.get('build_dir')
+    code_dir = config.get('code_dir')
+    template_dir = config.get('template_dir')
+    build_dir = config.get('build_dir')
     conf_dir = os.path.dirname(config_fn)
 
     # for supporting absolute path of sophon.yml
