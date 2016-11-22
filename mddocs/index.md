@@ -19,6 +19,7 @@ Features:
     - Sophon style docstring
     - (Coming Soon) [Google style][4], the style recommended by [Khan Academy][5]
     - (Coming Soon) [NumPy style][6]
+    
     Sophon also supports to parse every docstring in Python project,
     including docstrings on: `classes`, `methods` and `functions`
     (`modules`, `attributes` and `variables` will be supported soon)
