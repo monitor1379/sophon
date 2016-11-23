@@ -67,7 +67,7 @@ Dump a object into file.
 
 which is rendered by MkDocs with theme `yeti`:
 
-![dump()](img/index_dump.png)
+![dump()](img/dump_of_index.png)
 
 
 Much more legible, no?
