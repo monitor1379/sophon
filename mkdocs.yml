@@ -11,8 +11,13 @@ theme: yeti
 
 pages:
 - Home: index.md
-- User Guide: user_guide.md
-- Configuration: configuration.md
+- User Guide:
+  - Getting Started: user_guide/getting_started.md
+  - Configuration: user_guide/configuration.md
+- About:
+  - Release Notes: about/release_notes.md
+  - Contributing: about/contributing.md
+  - License: about/license.md
 - API: api/sophon/API.md
 
 
