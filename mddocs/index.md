@@ -67,7 +67,8 @@ Dump a object into file.
 
 which is rendered by MkDocs with theme `yeti`:
 
-<img src="img/index_dump.png" width=748 height=314 />
+![dump()](img/index_dump.png)
+
 
 Much more legible, no?
 
