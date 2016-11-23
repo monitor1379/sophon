@@ -68,6 +68,12 @@
                     
                         
 <li >
+    <a href="../sophon_style_python_docstrings/">Sophon Style Python Docstrings</a>
+</li>
+
+                    
+                        
+<li >
     <a href="../configuration/">Configuration</a>
 </li>
 
@@ -124,7 +130,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../configuration/">
+                    <a rel="prev" href="../sophon_style_python_docstrings/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -141,7 +147,7 @@
         <li class="main active"><a href="#installation">Installation</a></li>
         
     
-        <li class="main "><a href="#usage">Usage</a></li>
+        <li class="main "><a href="#create-your-first-api-documentation">Create your first API documentation</a></li>
         
     
         <li class="main "><a href="#todo">TODO</a></li>
@@ -152,7 +158,77 @@
             <div class="col-md-9" role="main">
 
 <h1 id="installation">Installation</h1>
-<h1 id="usage">Usage</h1>
+<p>Download Sophon from GitHub:</p>
+<pre><code class="bash">$ git clone git@github.com:monitor1379/sophon.git
+</code></pre>
+
+<p>Install Sophon using <code>pip</code>:</p>
+<pre><code class="bash">$ cd sophon
+$ pip install .
+</code></pre>
+
+<h1 id="create-your-first-api-documentation">Create your first API documentation</h1>
+<p>Now let's create your first API documentation. </p>
+<p>Assuming the path of your Python module is <code>/home/batsy/mycode.py</code>,
+and the code is:</p>
+<pre><code># encoding: utf-8
+
+
+class Person(object):
+    &quot;&quot;&quot;This is a class of Person.
+
+    # Arguments
+        name: `str`. The name of the Person instance.
+        age: `int`. Defaults to 18. The age of the Person instance.
+
+    # Attributes
+        name: `str`. The name of the Person instance.
+        age: `int`. Defaults to 18. The age of the Person instance.
+        sex: `str`. Defaults to 'male'. The sex of the Person instance.
+
+    # Note
+        This is Note.
+
+    # Examples
+        You could create a Person instance in this way:
+        ```python
+        batman = Person('Bruce Wayne')
+        elder = Person('you-know-who`, 99)
+        ```
+    &quot;&quot;&quot;
+
+    def __init__(self, name, age=18):
+        self.name = name
+        self.age = age
+        self.sex = 'male'
+
+    def speak(self, message):
+        &quot;&quot;&quot;Speak something.
+
+        # Argument:
+            message: `str`. Something to speak.
+
+        # Return:
+            `None`.
+        &quot;&quot;&quot;
+        print('[{}]: {}'.format(self.name, message))
+
+
+def show_info(person):
+    &quot;&quot;&quot;Show the personal information of the given person.
+
+    # Argument
+        person: `Person`. The person.
+    &quot;&quot;&quot;
+    print('name:{}, age:{}'.format(person.name, person.age))
+
+
+if __name__ == '__main__':
+    p = Person('monitor1379')
+    p.speak('Are you OK?')
+    show_info(p)
+</code></pre>
+
 <p>Example Sophon Style Python Docstrings</p>
 <h1 id="todo">TODO</h1>
 <p>ref:</p>

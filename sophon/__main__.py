@@ -3,10 +3,11 @@
 import click
 
 from sophon import __version__
-from sophon.build import build_from_yaml
+from sophon.cmd import new, build
 from sophon.log import ConsoleLogger
 
-help_build = 'Build API documents.'
+help_build = 'Build API documentations.'
+help_new = 'Create a configuration file.'
 help_config_file = 'Specify a configuration file.'
 default_config_file = 'sophon.yml'
 
@@ -15,17 +16,25 @@ default_config_file = 'sophon.yml'
 @click.version_option(__version__, '-v', '--version')
 def cli():
     """
-    Sophon - Auto documentation tool for Python project
+    Sophon - Automatic API Markdown Documentation Generation for Python
     """
 
 
 @cli.command('build', help=help_build)
 @click.option('-f', '--config-file', type=click.File('r'), default=default_config_file, help=help_config_file)
-def build(config_file):
+def run_sophon_build(config_file):
     logger = ConsoleLogger()
-    logger.info('specify config_file:' % config_file.name)
+    logger.info('Specify config_file:{}'.format(config_file.name))
     config_file.close()
-    build_from_yaml(config_file.name)
+    build.build_from_yaml(config_file.name)
+
+
+@cli.command('new', help=help_new)
+def run_sophon_new():
+    logger = ConsoleLogger()
+    logger.info('Creating Sophon configuration file: sophon.yml...')
+    new.new_yaml()
+    logger.info('Create done!')
 
 
 if __name__ == '__main__':

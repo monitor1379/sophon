@@ -1,26 +1,3 @@
-# Installation
-
-Download Sophon from GitHub:
-
-```bash
-$ git clone git@github.com:monitor1379/sophon.git
-```
-
-Install Sophon using `pip`:
-
-```bash
-$ cd sophon
-$ pip install .
-```
-
-# Create your first API documentation
-
-Now let's create your first API documentation. 
-
-Assuming the path of your Python module is `/home/batsy/mycode.py`,
-and the code is:
-
-```
 # encoding: utf-8
 
 
@@ -77,17 +54,3 @@ if __name__ == '__main__':
     p = Person('monitor1379')
     p.speak('Are you OK?')
     show_info(p)
-```
-
-
-
-
-Example Sophon Style Python Docstrings
-
-
-# TODO
-
-ref:
-
-http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html#example-google
-http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy

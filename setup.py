@@ -2,18 +2,19 @@ from setuptools import setup
 
 setup(
     name='sophon',
-    version='1.0',
-    packages=['sophon'],
+    version='0.1',
+    packages=['sophon', 'sophon.cmd', 'sophon.test'],
+    include_package_data=True,
     url='https://github.com/monitor1379/sophon',
     license='MIT',
     author='monitor1379',
     author_email='yy4f5da2@hotmail.com',
-    description='This is Description',
+    description='Automatic API Markdown Documentation Generation for Python',
     entry_points={
         'console_scripts': [
             'sophon = sophon.__main__:cli',
         ],
     },
-    requires=['inspect', 'shutil', 'yaml', 'click'],
+    install_requires=['pyyaml', 'click'],
     platforms=['Windows', 'Linux', 'Mac']
 )

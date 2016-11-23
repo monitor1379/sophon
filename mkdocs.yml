@@ -13,6 +13,7 @@ pages:
 - Home: index.md
 - User Guide:
   - Getting Started: user_guide/getting_started.md
+  - Sophon Style Python Docstrings: user_guide/sophon_style_python_docstrings.md
   - Configuration: user_guide/configuration.md
 - About:
   - Release Notes: about/release_notes.md

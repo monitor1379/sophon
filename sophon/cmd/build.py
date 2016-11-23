@@ -7,9 +7,9 @@ import sys
 
 import yaml
 
-from . import parsers
-from .log import ConsoleLogger
-from .utils import import_from_name
+from sophon import parsers
+from sophon.log import ConsoleLogger
+from sophon.utils import import_from_name
 
 default_build_dir = 'api'
 

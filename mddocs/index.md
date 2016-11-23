@@ -22,7 +22,7 @@ def dump(obj, filename, encrypt=False):
 
 
 reStructuredText is great, but docstring written in reST creates visually dense, and hard to read.
-Compare the jumble above to the same thing rewritten according to the [Sophon Style Guide][TODO]:
+Compare the jumble above to the same thing rewritten according to the [Sophon Style Python Docstring][8]:
 
 ```
 def dump(obj, filename, encrypy=False):
@@ -69,7 +69,6 @@ which is rendered by MkDocs with theme `yeti`:
 
 ![dump()](img/dump_of_index.png)
 
-
 Much more legible, no?
 
 As you see, 
@@ -79,7 +78,6 @@ and **Napoleon** (Sphinx extension that enables Sphinx to parse both NumPy and G
 style docstrings to reStructuredText).
 
 Sophon is written by [Zhenpeng Deng(monitor1379)][1] and licensed under the MIT license.
-
 
 ## Why Sophon?
 
@@ -131,13 +129,14 @@ and `Proton/Electron/Neutron/Photon`, meaning **particle**,
 consisting of a supercomputer embedded into a single proton that could fold itself to eleven space dimensions.
 
 
-[1]: http://www.monitor1379.com
+[1]: https://github.com/monitor1379
 [2]: http://www.mkdocs.org
 [3]: https://hexo.io
 [4]: http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html#example-google
 [5]: https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Docstrings
 [6]: http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy
 [7]: http://www.yaml.org/
+[8]: user_guide/sophon_style_python_docstrings
 
 <!--
 
