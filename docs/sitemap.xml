@@ -4,31 +4,53 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-11-22</lastmod>
+     <lastmod>2016-11-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
     <url>
-     <loc>None/user_guide/</loc>
-     <lastmod>2016-11-22</lastmod>
+     <loc>None/user_guide/getting_started/</loc>
+     <lastmod>2016-11-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>None/user_guide/configuration/</loc>
+     <lastmod>2016-11-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
+        
     <url>
-     <loc>None/configuration/</loc>
-     <lastmod>2016-11-22</lastmod>
+     <loc>None/about/release_notes/</loc>
+     <lastmod>2016-11-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>None/about/contributing/</loc>
+     <lastmod>2016-11-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/about/license/</loc>
+     <lastmod>2016-11-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
     <url>
      <loc>None/api/sophon/API/</loc>
-     <lastmod>2016-11-22</lastmod>
+     <lastmod>2016-11-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

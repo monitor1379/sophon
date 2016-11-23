@@ -56,14 +56,50 @@
             
             
             
-                <li >
-                    <a href="user_guide/">User Guide</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="user_guide/getting_started/">Getting Started</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="user_guide/configuration/">Configuration</a>
+</li>
+
+                    
+                    </ul>
                 </li>
             
             
             
-                <li >
-                    <a href="configuration/">Configuration</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="about/release_notes/">Release Notes</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="about/contributing/">Contributing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="about/license/">License</a>
+</li>
+
+                    
+                    </ul>
                 </li>
             
             
@@ -88,7 +124,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="user_guide/">
+                    <a rel="prev" href="user_guide/getting_started/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -108,6 +144,8 @@
         
             <li><a href="#why-sophon">Why Sophon?</a></li>
         
+            <li><a href="#what-does-sophon-mean">What does "Sophon" mean?</a></li>
+        
     
     </ul>
 </div></div>
@@ -115,17 +153,76 @@
 
 <h1 id="sophon-automatic-api-markdown-documentation-generation-for-python">Sophon: Automatic API Markdown Documentation Generation for Python</h1>
 <h2 id="what-is-sophon">What is Sophon?</h2>
-<p>Sophon is a tool that could <strong>automatically generate Markdown-format API documentations</strong> from Python docstring,
-just like Epydoc(supports reStructuredText、Javadoc、plaintext)
-and Napoleon(Sphinx extension that enables Sphinx to parse both NumPy and Google style docstrings to reStructuredText).</p>
+<p>Before I tell you what is Sophon, let me ask you a question: 
+Are you ever tired of writing docstrings that look like this?</p>
+<pre><code>def dump(obj, filename, encrypt=False):
+    &quot;&quot;&quot;Dump a object into file.
+    :param obj: A Python object
+    :type obj: any
+    :param filename: Filename of the file to dump
+    :type filename: str
+    :param encrypt: Whether or not to encrypt the file
+    :type encrypt: bool
+    :returns: Whether or not to dump successfully 
+    :rtype: bool
+    &quot;&quot;&quot;
+    pass
+</code></pre>
+
+<p>reStructuredText is great, but docstring written in reST creates visually dense, and hard to read.
+Compare the jumble above to the same thing rewritten according to the [Sophon Style Guide][TODO]:</p>
+<pre><code>def dump(obj, filename, encrypy=False):
+    &quot;&quot;&quot;Dump a object into file.
+
+    # Arguments
+        obj: `any`. A Python object.
+        filename: `str`. Filename of the file to dump.
+        encrypt: `bool`. Whether or not to encrypt the file.
+
+    # Return
+        `bool`: Whether or not to dump successfully.
+    &quot;&quot;&quot;
+</code></pre>
+
+<p>Use Sophon to parse the docstring and we get Markdown:</p>
+<pre><code>&lt;span style=&quot;float:right;&quot;&gt;[[source]](repo/blob/branch/__main__.py#L19)&lt;/span&gt;
+
+## dump
+
+```python
+dump(obj, filename, encrypy=False)
+```
+
+Dump a object into file.
+
+**Arguments**
+
+- **obj**: `any`. A Python object.
+- **filename**: `str`. Filename of the file to dump.
+- **encrypt**: `bool`. Whether or not to encrypt the file.
+
+**Return**
+
+- **`bool`**: Whether or not to dump successfully.
+
+---
+</code></pre>
+
+<p>which is rendered by MkDocs with theme <code>yeti</code>:</p>
+<p><img src="img/index_dump.png" width=748 height=314 /></p>
+<p>Much more legible, no?</p>
+<p>As you see, 
+Sophon is a tool that could <strong>automatically generate Markdown-format API documentations</strong> from Python docstring,
+just like <strong>Epydoc</strong> (supports reStructuredText, Javadoc, plaintext)
+and <strong>Napoleon</strong> (Sphinx extension that enables Sphinx to parse both NumPy and Google 
+style docstrings to reStructuredText).</p>
 <p>Sophon is written by <a href="http://www.monitor1379.com">Zhenpeng Deng(monitor1379)</a> and licensed under the MIT license.</p>
 <h2 id="why-sophon">Why Sophon?</h2>
 <p>Features:</p>
 <ul>
 <li>
 <p><strong>Support different kinds of docstrings.</strong>
-    reStructuredText is great, but docstring written in reST creates visually dense and is hard to read.
-    So Sophon mainly supports to parse docstring with the following styles and converts them to Markdown: </p>
+    Sophon mainly supports to parse docstring with the following styles and converts them to Markdown: </p>
 <ul>
 <li>Sophon style docstring</li>
 <li>(Coming Soon) <a href="http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html#example-google">Google style</a>, the style recommended by <a href="https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Docstrings">Khan Academy</a></li>
@@ -158,12 +255,39 @@ to build beautiful documentations or blogs such as
     you only need one command to build you API documentation.</p>
 </li>
 </ul>
-<h3 id="what-does-sophon-mean">What does "Sophon" mean?</h3>
+<p>You can find more details in <strong>User Guide</strong>.</p>
+<h2 id="what-does-sophon-mean">What does "Sophon" mean?</h2>
 <p><strong>Sophon</strong> is the official translation of "<strong>智子</strong>" in 《Rememberance of Earth's Past II: The Dark Forest》
 which is written by the famous Chinese science fiction writer named <strong>Cixin Liu(刘慈欣)</strong>.</p>
 <p><strong>Sophon</strong> is a word amalgamation of <code>Sophia/sophist/sophisticated</code>, meaning <strong>wisdom</strong>, 
 and <code>Proton/Electron/Neutron/Photon</code>, meaning <strong>particle</strong>,
-consisting of a supercomputer embedded into a single proton that could fold itself to eleven space dimensions.</p></div>
+consisting of a supercomputer embedded into a single proton that could fold itself to eleven space dimensions.</p>
+<!--
+
+# Sophon: Python API文档(Markdown格式)自动生成工具
+
+## 什么是Sophon?
+
+Sophon是一个可以从Python docstring(文档字符串)中自动生成Markdown格式API文档的工具，
+就像Epydoc(支持解析reStructuredText、Javadoc、plaintext格式的docstring)
+与Napoleon(Sphinx的一个扩展工具，能够让Sphinx解析Google style和NumPy style的docstring)。
+
+Sophon由[Zhenpeng Deng(monitor1379)][1]编写，使用MIT许可证作为软件授权条款。
+
+## 为什么使用Sophon?
+
+Sophon具有以下特点：
+
+- **支持不同风格的Python docstring。**
+    reStructuredText非常棒，但是用纯reST来写的Python docstring会造成视觉上的阅读障碍导致docstring难以阅读。
+    所以Sophon支持以下几种风格的docstring并能够将其转换为Markdown文档：
+    - Sophon风格
+    - (即将支持) [Google style][4], 被[Khan Academy][5]所推荐使用的docstring风格
+    - (即将支持) [NumPy style][6]
+
+# TODO
+
+--></div>
         </div>
 
         <footer class="col-md-12">
