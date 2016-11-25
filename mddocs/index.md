@@ -115,7 +115,8 @@ Features:
     you only need one command to build you API documentation.
 
 
-You can find more details in **User Guide**.
+You can find more details in **[User Guide/Installation](user_guide/installation.md)** or
+**[User Guide/Getting Started](user_guide/getting_started.md)**.
 
 
 ## What does "Sophon" mean?

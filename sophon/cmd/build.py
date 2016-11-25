@@ -1,6 +1,7 @@
 # encoding: utf-8
 from __future__ import print_function
 
+import logging
 import os
 import shutil
 import sys
@@ -8,10 +9,10 @@ import sys
 import yaml
 
 from sophon import parsers
-from sophon.log import ConsoleLogger
 from sophon.utils import import_from_name
 
 default_build_dir = 'api'
+log = logging.getLogger("sophon")
 
 
 def _to_abs_path(directory, path):
@@ -32,23 +33,22 @@ def build_from_yaml(config_fn):
         `None`
     """
     config_fn = os.path.abspath(config_fn)
-    logger = ConsoleLogger()
     # ==========================================================================
     # load configuration from sophon.yml
-    logger.info('Loading configuration file: {}'.format(config_fn))
+    log.info('Loading configuration file: {}'.format(config_fn))
     with open(config_fn, 'r') as f:
         config = yaml.load(f)
     pages = config.get('pages')  # necessary
     if not pages:
-        logger.warn('Sophon: There is no pages to build.')
+        log.warn('Sophon: There is no pages to build.')
         return
 
     repo_url = config.get('repo_url')
     branch = config.get('branch', 'master')
-    logger.info('Using repo_url: {}'.format(repo_url))
-    logger.info('Using branch: {}'.format(branch))
+    log.info('Using repo_url: {}'.format(repo_url))
+    log.info('Using branch: {}'.format(branch))
 
-    style = config.get('style')
+    style = config.get('style', 'sophon')
     parser = parsers.get(style)
     if not parser:
         message = 'Invalid style:{}, only support Sophon/reStructuredText/Google/NumPy style!'.format(style)
@@ -76,17 +76,17 @@ def build_from_yaml(config_fn):
     else:
         build_dir = conf_dir + os.sep + default_build_dir
 
-    logger.info('Using code dir: {}'.format(code_dir))
-    logger.info('Using template dir: {}'.format(template_dir))
-    logger.info('Using build dir: {}'.format(build_dir))
+    log.info('Using code dir: {}'.format(code_dir))
+    log.info('Using template dir: {}'.format(template_dir))
+    log.info('Using build dir: {}'.format(build_dir))
 
     # ==========================================================================
     # clean build_dir
-    logger.info('Creating build_dir...')
+    log.info('Creating build_dir...')
     if os.path.exists(build_dir):
         shutil.rmtree(build_dir)
         os.makedirs(build_dir)
-    logger.info('Create done')
+    log.info('Create done')
 
     # check template_dir
     if template_dir and not os.path.exists(template_dir):
@@ -99,9 +99,9 @@ def build_from_yaml(config_fn):
         # get build filename and template filename
         build_fn = page['page']  # necessary
         template_fn = page.get('template')  # not necessary
-        logger.info('===========================')
-        logger.info('Building file: {}'.format(build_fn))
-        logger.info('Using template file: {}'.format(template_fn))
+        log.info('===========================')
+        log.info('Building file: {}'.format(build_fn))
+        log.info('Using template file: {}'.format(template_fn))
         # =======================================================
         # check template file
         if template_fn:
@@ -124,19 +124,19 @@ def build_from_yaml(config_fn):
             with open(template_fn) as temp_f:
                 build_md = temp_f.read()
         else:
-            logger.info('No template to load')
+            log.info('No template to load')
             build_md = ''
         # pre-write
-        logger.info('Creating page...')
+        log.info('Creating page...')
 
         with open(build_fn, 'w') as f:
             f.write(build_md)
-        logger.info('Create done')
+        log.info('Create done')
         # =======================================================
         # start generating docstring
         tags = page.get('tags')
         if not tags:
-            logger.warn('No tags in page:{}'.format(build_fn))
+            log.warn('No tags in page:{}'.format(build_fn))
             continue
 
         with open(build_fn, 'r') as f:
@@ -146,9 +146,9 @@ def build_from_yaml(config_fn):
             # ===============================
             tag_name = tag.get('tag')
             tag_doc = ''
-            logger.info('-------------------------')
-            logger.info('Current tag: %s' % tag_name)
-            logger.info('generateing doc...')
+            log.info('-------------------------')
+            log.info('Current tag: %s' % tag_name)
+            log.info('generateing doc...')
 
             # ===============================
             # generate markdown from classes
@@ -181,20 +181,20 @@ def build_from_yaml(config_fn):
                 if tag_name not in build_file_doc:
                     message = '{} is not in file {}. markdown doc will append to the file.'.format(tag_name,
                                                                                                    page['page'])
-                    logger.warn(message)
+                    log.warn(message)
                     build_file_doc += tag_doc
                 else:
-                    logger.info('Replacing tag: %s' % tag_name)
+                    log.info('Replacing tag: %s' % tag_name)
                     build_file_doc = build_file_doc.replace('{{%s}}' % tag_name, tag_doc)
-                    logger.info('Replace done')
+                    log.info('Replace done')
             else:
                 message = '{} has a tag without name. markdown doc will append to the file.'.format(page['page'])
-                logger.warn(message)
+                log.warn(message)
                 build_file_doc += tag_doc
 
         # =======================================================
         # write markdown doc to build_file
-        logger.info('Writing doc to page...')
+        log.info('Writing doc to page...')
         with open(build_fn, 'w') as f:
             f.write(build_file_doc)
-        logger.info('Write done')
+        log.info('Write done')

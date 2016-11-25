@@ -1,0 +1,11 @@
+code_dir: .
+build_dir: api
+pages:
+- page: API_of_mycode.md
+  tags:
+  - tag:
+    classes:
+    - mycode.Person
+    functions:
+    - mycode.Person.speak
+    - mycode.show_info

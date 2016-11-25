@@ -8,19 +8,11 @@ class Person(object):
         name: `str`. The name of the Person instance.
         age: `int`. Defaults to 18. The age of the Person instance.
 
-    # Attributes
-        name: `str`. The name of the Person instance.
-        age: `int`. Defaults to 18. The age of the Person instance.
-        sex: `str`. Defaults to 'male'. The sex of the Person instance.
-
-    # Note
-        This is Note.
-
     # Examples
         You could create a Person instance in this way:
         ```python
         batman = Person('Bruce Wayne')
-        elder = Person('you-know-who`, 99)
+        elder = Person('you-know-who', 99)
         ```
     """
 
@@ -51,6 +43,9 @@ def show_info(person):
 
 
 if __name__ == '__main__':
-    p = Person('monitor1379')
-    p.speak('Are you OK?')
-    show_info(p)
+    from sophon.parsers import SophonParser
+    parser = SophonParser()
+    print parser.parse_from_class(Person)
+    print parser.parse_from_function(Person.speak)
+    print parser.parse_from_function(show_info)
+

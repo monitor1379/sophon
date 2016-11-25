@@ -134,7 +134,7 @@ def extract_class_signature(clazz):
     """
     try:
         signature = extract_function_signature(clazz.__init__, ismethod=True)
-        signature = signature.replace('__init__', clazz.__name__)
+        signature = signature.replace('.__init__', '')
     except:
         # in case the class inherits from object and
         # does not define '__init__' function

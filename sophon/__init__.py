@@ -1,7 +1,6 @@
 # encoding: utf-8
 from .cmd import build
 from .cmd import new
-from . import log
 from . import parsers
 from . import utils
 

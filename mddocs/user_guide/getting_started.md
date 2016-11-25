@@ -1,24 +1,63 @@
-# Installation
-
-Download Sophon from GitHub:
-
-```bash
-$ git clone git@github.com:monitor1379/sophon.git
-```
-
-Install Sophon using `pip`:
-
-```bash
-$ cd sophon
-$ pip install .
-```
-
-# Create your first API documentation
+# Getting started
 
 Now let's create your first API documentation. 
 
-Assuming the path of your Python module is `/home/batsy/mycode.py`,
+Assuming the path of your Python module is `E://myproject//mycode.py`,
 and the code is:
+
+```
+def hello_world(message):
+    """Speak a message.
+
+    Speak a message to the world.
+    
+    # Argument
+        message: `str`. The message you want to speak.
+               
+    # Return
+        `None`.
+    """
+    pass
+```
+
+
+Getting started is super easy:
+
+```
+$ sophon new
+[2016-11-25 09:44:48,809][INFO]: Creating Sophon configuration file: sophon.yml...
+[2016-11-25 09:44:48,812][INFO]: Create done!
+```
+
+1 seconds latter the configuration file `sophon.yml` has been created for you.
+
+`sophon.yml` is the only configuration file, 
+it decides which documentation of classes or functions will be generated and inserted to where.
+Note that the `sophon.yml` is not necessary to be in the same directory as `mycode.py`.
+
+Open the `sophon.yml`, edit it:
+```python 
+code_dir: E://myproject
+build_dir: api
+pages:
+- page: API_of_mycode.md
+  tags:
+  - tag: 
+    functions:
+    - mycode.speak
+```
+
+- `code_dir` means the path of your Python project, 
+this path will be add to the `sys.path` by Sophon so Sophon can `import` it.
+Note that it can be absolute path or relative path to `sophon.yml`.
+
+- `build_dir` means the directory of output documentations.
+Note that it can be absolute path or relative path to `sophon.yml`.
+
+- `pages` includes a list of `page`, each `page` means a Markdown file.
+
+
+
 
 ```
 # encoding: utf-8
@@ -31,19 +70,11 @@ class Person(object):
         name: `str`. The name of the Person instance.
         age: `int`. Defaults to 18. The age of the Person instance.
 
-    # Attributes
-        name: `str`. The name of the Person instance.
-        age: `int`. Defaults to 18. The age of the Person instance.
-        sex: `str`. Defaults to 'male'. The sex of the Person instance.
-
-    # Note
-        This is Note.
-
     # Examples
         You could create a Person instance in this way:
         ```python
         batman = Person('Bruce Wayne')
-        elder = Person('you-know-who`, 99)
+        elder = Person('you-know-who', 99)
         ```
     """
 
@@ -63,23 +94,7 @@ class Person(object):
         """
         print('[{}]: {}'.format(self.name, message))
 
-
-def show_info(person):
-    """Show the personal information of the given person.
-
-    # Argument
-        person: `Person`. The person.
-    """
-    print('name:{}, age:{}'.format(person.name, person.age))
-
-
-if __name__ == '__main__':
-    p = Person('monitor1379')
-    p.speak('Are you OK?')
-    show_info(p)
 ```
-
-
 
 
 Example Sophon Style Python Docstrings

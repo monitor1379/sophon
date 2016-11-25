@@ -11,7 +11,7 @@ This is some API documentations of Sophon.
 ## Parser
 
 ```python
-sophon.parsers.Parser.Parser()
+sophon.parsers.Parser()
 ```
 
 Top level base class of parsers.
@@ -26,7 +26,7 @@ Top level base class of parsers.
 ## ReStructuredTextParser
 
 ```python
-sophon.parsers.ReStructuredTextParser.ReStructuredTextParser()
+sophon.parsers.ReStructuredTextParser()
 ```
 
 Support soon.
@@ -40,7 +40,7 @@ Support soon.
 ## GoogleDocParser
 
 ```python
-sophon.parsers.GoogleDocParser.GoogleDocParser()
+sophon.parsers.GoogleDocParser()
 ```
 
 Support soon.
@@ -54,7 +54,7 @@ Support soon.
 ## NumPyDocParser
 
 ```python
-sophon.parsers.NumPyDocParser.NumPyDocParser()
+sophon.parsers.NumPyDocParser()
 ```
 
 Support soon.
@@ -66,7 +66,7 @@ Support soon.
 ## SophonParser
 
 ```python
-sophon.parsers.SophonParser.SophonParser()
+sophon.parsers.SophonParser()
 ```
 
 A docstring parser for parsing Sophon style docstring to Markdown.
@@ -365,12 +365,12 @@ Get the definition position of obj in source file, then link it to GitHub repo.
 
 
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/build.py#L25)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/cmd/build.py#L25)</span>
 
 ## build_from_yaml
 
 ```python
-sophon.build.build_from_yaml(config_fn)
+sophon.cmd.build.build_from_yaml(config_fn)
 ```
 
 Build documentations of python project given the configuration filename.
