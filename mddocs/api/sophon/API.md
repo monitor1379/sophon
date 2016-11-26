@@ -365,7 +365,7 @@ Get the definition position of obj in source file, then link it to GitHub repo.
 
 
 
-<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/cmd/build.py#L25)</span>
+<span style="float:right;">[[source]](https://github.com/monitor1379/sophon/blob/master/sophon/cmd/build.py#L26)</span>
 
 ## build_from_yaml
 

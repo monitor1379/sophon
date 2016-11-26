@@ -1,5 +1,18 @@
 # encoding: utf-8
 
+def hello_world(message):
+    """Speak a message.
+
+    Speak a message to the world.
+
+    # Argument
+        message: `str`. The message you want to speak.
+
+    # Return
+        `None`.
+    """
+    pass
+
 
 class Person(object):
     """This is a class of Person.

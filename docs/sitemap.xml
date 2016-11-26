@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,20 +12,26 @@
     
         
     <url>
+     <loc>None/user_guide/installation/</loc>
+     <lastmod>2016-11-26</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None/user_guide/getting_started/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/user_guide/sophon_style_python_docstrings/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/user_guide/configuration/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,19 +41,19 @@
         
     <url>
      <loc>None/about/release_notes/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/about/contributing/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/about/license/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -56,7 +62,7 @@
     
     <url>
      <loc>None/api/sophon/API/</loc>
-     <lastmod>2016-11-24</lastmod>
+     <lastmod>2016-11-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

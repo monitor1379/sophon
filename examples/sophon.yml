@@ -1,11 +1,13 @@
 code_dir: .
+template_dir: temp
 build_dir: api
 pages:
 - page: API_of_mycode.md
+  template: API_of_mycode.md
   tags:
+  - tag: tag0
+    functions:
+    - mycode.hello_world
   - tag:
     classes:
     - mycode.Person
-    functions:
-    - mycode.Person.speak
-    - mycode.show_info
