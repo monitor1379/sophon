@@ -269,7 +269,7 @@ Note that:
 - if template Markdown file has a tag which is not specified in `sophon.yml`, Sophon will do nothing to it.
 
 
-# More details
+# 5. More details
 
 More details of configuration can see **[User Guide/Configuration](configuration.md)**.
 
