@@ -3,6 +3,24 @@
 A `sophon.yml` must contain following information.
 
 
+## Simple example of configuration file
+
+Let's see an simple example of configuration file.
+
+```
+TODO
+```
+
+## Complex example of configuration file
+
+Let's see an complex example of configuration file.
+
+```
+TODO
+```
+
+## Hierarchy of configuration file
+
 ```
 # 指定要抽取的代码的所在目录
 # 设置该目录的目的为了保证python module能够被导入
@@ -59,7 +77,6 @@ pages:
     # 后续支持
     # classes_with_members:
 ```
-
 
 ### code_dir
 ### template_dir
