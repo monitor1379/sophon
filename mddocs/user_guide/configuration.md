@@ -1,42 +1,149 @@
 # Configuration
 
-A `sophon.yml` must contain following information.
+# Project information
 
+`sophon.yml` must contain following information.
 
-## Simple example of configuration file
+## code_dir
 
-Let's see an simple example of configuration file.
+指定您Python项目所在的文件夹。
+
+- Sophon会将该目录插入到`sys.path`中，以让Python解析器能够import。
+- `code_dir`支持相对路径。如果是相对路径则是相对于`sophon.yml`而言。
+- 可以不指定`code_dir`，默认为`.`。
+
+---
+
+## template_dir
+
+存放Markdown模板的文件夹。
+模板文件就是Markdown文件，只不还包含了一些形如`{{tag_name}}`的标记。更多详细用法请看`tags`。
+
+- `template_dir`支持相对路径。如果是相对路径则是相对于`sophon.yml`而言。
+- 可以不指定`template_dir`，默认为`None`。
+- 不指定`template_dir`表示不使用模板功能，此时后续的某个文档`page`项包含了`template`项，则会报错。
+
+---
+
+## build_dir
+
+生成的API文档所存放的文件夹。
+
+- `build_dir`支持相对路径。如果是相对路径则是相对于`sophon.yml`而言。
+- 可以不指定`build_dir`，默认为`./api`，即在`sophon.yml`所在文件夹新建一个叫做`api`的文件夹来存放API文档。
+
+---
+
+## repo_url
+
+指定存放了源代码的仓库，可以在API文档中为每个API生成一个链接到源代码的超链接。
+
+- 暂时仅支持GitHub。
+- 格式为`https://github.com/your_user_name/your_repo`。
+- 可以不指定`repo_url`，默认为`None`。
+- 不指定`repo_url`表示不使用该功能。
+
+---
+
+## branch
+
+指定源代码仓库上的分支。
+
+- 可以不指定`branch`，默认为`master`。
+- 当不指定`repo_url`时，`branch`无效。
+
+---
+
+## style
+
+指定您Python代码中docstring所使用的风格。
+
+- 目前支持`sophon`(`google`, `numpy`即将支持)。
+- 可以不指定`style`，默认为`sophon`。
+
+---
+
+## pages
+
+`pages`是一个包含了0个或多个`page`的列表，包含了所有要生成的文档。更多详细用法请看`page`。
+
+- 可以不指定`pages`，默认为`None`。
+- 当不指定`pages`或指定了`pages`但是不包含任何`page`时，表示不生成任何文档。
+
+---
+
+## page
+
+`page`表示一个生成的API Markdown文档。格式为：
 
 ```
-TODO
-```
+# filename: /home/user/sophon.yml
+build_dir: api
+template_dir: templates
 
-## Complex example of configuration file
+pages:
+- page: test/aa.md
+  template: bb.md
+- page: cc.md
+  template: test/dd.md
+``` 
 
-Let's see an complex example of configuration file.
+- 每个`page`必须指定文件路径名，该文件路径名必须是相对路径，且是相对于`build_dir`而言。
+- 在上面的例子中，Sophon会按顺序：
+    - 生成路径名为`/home/user/api/test/aa.md`的API文档，
+    所使用的模板文件为`/home/user/templates/bb.md`。
+    - 生成路径名为`/home/user/api/cc.md`的API文档，
+    所使用的模板文件为`/home/user/templates/test/dd.md`。
 
+---
+
+## tags
+
+`tags`是一个包含了0个或多个`tag`的列表，也是`page`的成员。更多详细用法请看`tag`。
+
+- 可以不指定`tags`，默认为`None`。
+- 当不指定`tags`或指定了`tags`但是不包含任何`tag`时，Sophon不会向该`tags`所属`page`文件中生成任何Markdown text。
+
+---
+
+## tag
+
+`tag`表示一个标记，通常结合模板文件来使用，表示生成的API Markdown text应该插入到模板文件的哪个地方。
+
+举个例子：
 ```
-TODO
-```
+# filename: /home/user/sophon.yml
+build_dir: api
+template_dir: templates
+
+pages:
+- page: test/aa.md
+  template: bb.md
+  tags:
+  - tag:
+  functions:
+  
+``` 
+
+
+---
+
+## functions
+
+---
+
+## classes
+
+---
+
+## classes_with_methods
+
+---
+
 
 ## Hierarchy of configuration file
 
 ```
-# 指定要抽取的代码的所在目录
-# 设置该目录的目的为了保证python module能够被导入
-# 可以没有，默认为.
-code_dir: .
-
-# 可以没有，默认为None
-# 如果没有模板，则所有tag对应的markdown doc对应添加在page文件末尾
-template_dir: templates
-
-# 可以没有，默认为./api
-build_dir:
-
-# 需要注意，上述两个路径，可以是绝对路径，可以是相对路径
-# 如果是相对路径，则是相对于本配置文件而言
-
 
 # 可以没有，默认为None
 pages:
@@ -78,17 +185,19 @@ pages:
     # classes_with_members:
 ```
 
-### code_dir
-### template_dir
-### build_dir
-### repo_url
-### branch
-### style
-### pages
-### page
-### tags
-### tag
-### functions
-### classes
-### classes_with_methods
 
+## Simple example of configuration file
+
+Let's see an simple example of configuration file.
+
+```
+TODO
+```
+
+## Complex example of configuration file
+
+Let's see an complex example of configuration file.
+
+```
+TODO
+```
