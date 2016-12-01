@@ -76,7 +76,7 @@
 
 `page`表示一个生成的API Markdown文档。格式为：
 
-```
+```text
 # filename: /home/user/sophon.yml
 build_dir: api
 template_dir: templates
@@ -110,8 +110,19 @@ pages:
 
 `tag`表示一个标记，通常结合模板文件来使用，表示生成的API Markdown text应该插入到模板文件的哪个地方。
 
-举个例子：
+举个例子,假设模板文件`/home/user/templates/bb.md`内容为：
+```text
+# Hello World
+
+{{tag0}}
+
+## Hello Sophon
+
+{{tag1}}
 ```
+
+配置文件为：
+```text
 # filename: /home/user/sophon.yml
 build_dir: api
 template_dir: templates
@@ -120,84 +131,52 @@ pages:
 - page: test/aa.md
   template: bb.md
   tags:
-  - tag:
-  functions:
-  
+  - tag: tag0
+    functions:
+    - mod.func
+  - tag: tag1
+    classes:
+    - mod.clazz
 ``` 
 
 
----
+则运行Sophon之后：
 
-## functions
+- Sophon会先读取模板文件`/home/user/templates/bb.md`里的内容；
+- 然后将标记`{{tag0}}`替换为函数`mod.func`的API Markdown text；
+- 再将标记`{{tag1}}`替换为类`mod.clazz`的API Markdown text；
+- 最后将内容写入`/home/user/api/test/aa.md`中。
+
+
+注意的是，以下几种情况中，该tag下包含的函数、类的API Markdown text会依次添加在文件末尾，而不是替换掉模板文件中的`{{tag}}`：
+
+- 配置文件中指定了一个tag，但是没有给tag名时；
+- 配置文件中指定了一个tag，但是在模板文件中不存在该tag标记时；
+- 配置文件中指定了一个tag，但是该tag所属的`page`没有使用模板文件时。
+
+每个tag所包含的API按照固定顺序classes->classes_with_members->functions依次生成API Markdown text。
+
+另外，Sophon不会对存在于模板文件但是却没有在配置文件中指定的tag作任何处理，也就是一切以配置文件为准。
 
 ---
 
 ## classes
 
+`classes`是一个包含多个类的包路径的列表。
+
+Sophon在生成一个类的API文档时，只会选择该类的docstring来生成该类构造函数的API Markdown text，
+并不包括该类的成员函数与方法。
+
 ---
 
 ## classes_with_methods
 
+`classes_with_methods`是一个包含多个函数的包路径的列表。
+
+Sophon在生成一个类的API文档时，会生成包括构造函数在内的该类所有公有成员函数与方法的API Markdown text。
+
 ---
 
+## functions
 
-## Hierarchy of configuration file
-
-```
-
-# 可以没有，默认为None
-pages:
-
-# 如果有page，则在build_dir/下生成名为page的文件
-- page: index.md
-
-- page: user/bb.md  # build_dir/user/bb.md
-  # 如果指定了该文件的模板，且template_dir存在，则使用模板。
-  # 如果指定了该文件的模板，而template_dir不存在，则报错
-  # 如果指定了该文件的模板，且template_dir存在，但模板文件不存在，则报错
-  # 如果没有指定该文件的模板，则不用模板，即创建空白page然后添加doc到文件末尾
-  template: user/bb.md  # template_dir/user/bb.md
-
-
-- page: cc.md
-  template: cc_temp.md
-  # 如果没有tags，则不从代码中生成markdown。
-    # 如果指定了模板文件，则page内容为模板文件的内容
-    # 如果没有指定模板文件，则page内容为空
-  # 如果有tags，则对每个tag生成markdown
-    # 如果指定了template，则将template文件中的每个{{tag标记}}置换为对应的markdown
-    # 如果没有指定template，tags的位置作用失效，所有markdown添加到文件末尾
-  tags:
-  # 每一个tag都有一个tag名，用于表示doc在文件中的位置
-  # 如果有tag名，则置换{{tag}}为markdown内容
-  # 如果没有tag名，则生成的doc添加在page的末尾
-  # 如果tag内容为空，则表示markdown doc为空字符串''
-
-  - tag: tag1
-    # 每个tag的doc生成顺序并不是tag内部决定，而是classes->classes_with_members->functions
-    functions:
-    - sss.gates.foo
-  - tag: tag2
-    classes:
-    - sss.gates.Dense
-    - sss.gates.Person
-    # 后续支持
-    # classes_with_members:
-```
-
-
-## Simple example of configuration file
-
-Let's see an simple example of configuration file.
-
-```
-TODO
-```
-
-## Complex example of configuration file
-
-Let's see an complex example of configuration file.
-
-```
-TODO
-```
+`functions`是一个包含多个函数的包路径的列表。
