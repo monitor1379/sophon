@@ -50,6 +50,5 @@ pages:
     classes:
     - sss.gates.Dense
     - sss.gates.Person
-    # 后续支持
-    # classes_with_members:
-    #
+    classes_with_members:
+    - sss.gates.Person

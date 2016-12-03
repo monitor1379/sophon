@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='sophon',
-    version='0.1',
+    version='0.1.0',
     packages=['sophon', 'sophon.cmd', 'sophon.test'],
     include_package_data=True,
     url='https://github.com/monitor1379/sophon',

@@ -101,12 +101,6 @@
                     
                         
 <li >
-    <a href="../../about/contributing/">Contributing</a>
-</li>
-
-                    
-                        
-<li >
     <a href="../../about/license/">License</a>
 </li>
 
@@ -168,7 +162,104 @@
 <p><a href="http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy">Example NumPy Style Python Docstrings</a></p>
 </li>
 </ul>
-</div></div>
+</div>
+<p>This is a module named <code>example.py</code>, which represents
+how to write the docstrings of <code>module</code>, <code>function</code>, <code>class</code> and <code>method</code>.</p>
+<pre><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;Short description of module.
+
+Long description of module.
+Can be multiline.
+&quot;&quot;&quot;
+
+def example_create(name, age=0, sex='male', **kwargs):
+    &quot;&quot;&quot;Short description of function.
+
+    Long description of function.
+    Can be multiline too.
+
+    # Arguments
+        name: `any`. Description of name.
+        age: `int`. Description of age. Defaults to zero.
+            If it is multiline then must indent the following lines.
+        sex: `str`. Description of sex. Defaults to 'male'.
+        **kwargs: `dict`.
+
+    # Return
+        `Person`: an instance object of `Person` class with given information.
+
+    # Note
+        Here is note.
+
+    # Examples
+        Here is examples.
+        ```
+        jzm = example_create('jzm')
+        batman = example_create('Bruce Wayne', 28, 'male')
+        ```
+
+    &quot;&quot;&quot;
+    pass
+
+
+Class Person(object):
+    &quot;&quot;&quot;Short description of class.
+
+    Long description of class.
+    Can be multiline too.
+
+    # Arguments
+        name: `any`. Description of name.
+        age: `int`. Description of age. Defaults to zero.
+            If it is multiline then must indent the following lines.
+        sex: `str`. Description of sex. Defaults to 'male'.
+        **kwargs: `dict`.
+
+    # Note
+        Here is note.
+
+    # Examples
+        Here is examples.
+        ```
+        jzm = Person('jzm')
+        batman = Person('Bruce Wayne', 28, 'male')
+        ```
+
+    &quot;&quot;&quot;
+
+    def __init__(self, name, age=0, sex='male', **kwargs):
+        pass
+
+    def speak(self, message):
+        &quot;&quot;&quot;Short description of method.
+
+        Long description of method.
+        Can be multiline too.
+
+        # Arguments
+            message: `str`. Description of message.
+
+        # Return
+            `None`.
+
+        # Note
+            Here is note.
+
+        # Examples
+            Here is examples.
+            ```
+            batman = example_create('Bruce Wayne', 28, 'male')
+            batman.speak('I am batman!')
+            ```
+        &quot;&quot;&quot;
+        pass
+</code></pre>
+
+<!--
+
+wzxhzdk:1
+
+--></div>
         </div>
 
         <footer class="col-md-12">
