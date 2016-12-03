@@ -1,6 +1,6 @@
 # Sophon: Automatic API Markdown Documentation Generation for Python
 
-More details about Sophon is in here: [Sophon](https://monitor1379.github.io/sophon).
+More details about installation and usage of Sophon are in here: [Sophon](https://monitor1379.github.io/sophon).
 
 ## What is Sophon?
 
